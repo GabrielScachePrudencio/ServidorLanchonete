@@ -1,0 +1,90 @@
+[
+  {
+    "ContainingType": "ServidorLanches.Controllers.PedidoController",
+    "Method": "addPedidoEItens",
+    "RelativePath": "api/auth/add-pedido-itens",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "novoPedido",
+        "Type": "ServidorLanches.model.Pedido",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.PedidoController",
+    "Method": "pegarTodosPedidos",
+    "RelativePath": "api/auth/all-pedidos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.CardapioController",
+    "Method": "GetAllCardapios",
+    "RelativePath": "api/auth/cardapio-completo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.LoginController",
+    "Method": "Login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.LoginController",
+    "Method": "Logout",
+    "RelativePath": "api/auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.PedidoController",
+    "Method": "pegarPedidoEItensId",
+    "RelativePath": "api/auth/pedido-info",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idPedido",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.LoginController",
+    "Method": "UsuarioLogado",
+    "RelativePath": "api/auth/usuario-logado",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
