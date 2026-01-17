@@ -7,7 +7,8 @@ namespace ServidorLanches.service
     {
         private readonly CardapioRepository _cardapioRepository;
         public CardapioService(repository.CardapioRepository cardapioRepository)
-        {
+        { 
+
             _cardapioRepository = cardapioRepository;
         }
         public List<Cardapio> GetAllCardapios()
