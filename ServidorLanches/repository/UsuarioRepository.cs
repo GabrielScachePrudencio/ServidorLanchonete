@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ServidorLanches.model;
+using System.Data;
 
 namespace ServidorLanches.Repositories
 {
@@ -38,7 +39,8 @@ namespace ServidorLanches.Repositories
                 Nome = reader.GetString("nome"),
                 Email = reader.GetString("email"),
                 Senha = reader.GetString("senha"),
-                DataCriacao = reader.GetDateTime("data_criacao")
+                DataCriacao = reader.GetDateTime("data_criacao"),
+                TipoUsuario = Enum.Parse<TipoUsuario>(reader.GetString("tipoUsuario"))
             };
         }
     }

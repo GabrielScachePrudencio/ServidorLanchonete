@@ -50,3 +50,4 @@ C:\Users\Flavio\Desktop\Net\wpf\ServidorLanches\ServidorLanches\bin\Debug\net8.0
 C:\Users\Flavio\Desktop\Net\wpf\ServidorLanches\ServidorLanches\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
 C:\Users\Flavio\Desktop\Net\wpf\ServidorLanches\ServidorLanches\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
 C:\Users\Flavio\Desktop\Net\wpf\ServidorLanches\ServidorLanches\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\Flavio\Desktop\Net\wpf\ServidorLanches\ServidorLanches\obj\Debug\net8.0\ServidorLanches.sourcelink.json

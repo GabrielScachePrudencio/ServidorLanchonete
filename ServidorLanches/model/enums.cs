@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ServidorLanches.model
 {
-    class enums 
+    class enums
     {
 
-        
+
     }
 
     public enum TipoCardapio
@@ -44,6 +44,14 @@ namespace ServidorLanches.model
         InformarCpf,
         SelecionarItens,
         ConfirmarPedido
+    }
+
+    public enum TipoUsuario
+    {
+        Vendedor,
+        Gerente,
+        Administrador,
+
     }
 
 }
