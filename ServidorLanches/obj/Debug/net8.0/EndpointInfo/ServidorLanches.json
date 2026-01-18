@@ -5,6 +5,49 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/auth/configuracoes-gerais": {
+      "get": {
+        "tags": [
+          "Administrativo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/atualizar": {
+      "put": {
+        "tags": [
+          "Administrativo"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfiguracoesGerais"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfiguracoesGerais"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfiguracoesGerais"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/auth/cardapio-completo": {
       "post": {
         "tags": [
@@ -140,6 +183,36 @@
   },
   "components": {
     "schemas": {
+      "ConfiguracoesGerais": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomeFantasia": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "endereco": {
+            "type": "string",
+            "nullable": true
+          },
+          "pathImagemLogo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ItemPedido": {
         "type": "object",
         "properties": {

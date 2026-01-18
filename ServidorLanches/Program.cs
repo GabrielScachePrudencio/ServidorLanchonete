@@ -33,6 +33,8 @@ builder.Services.AddScoped<PedidosRepository>();
 builder.Services.AddScoped<PedidosService>();
 builder.Services.AddScoped<CardapioRepository>();
 builder.Services.AddScoped<CardapioService>();
+builder.Services.AddScoped<AdministrativoRepository>();
+builder.Services.AddScoped<AdministrativoService>();
 
 var app = builder.Build();
 

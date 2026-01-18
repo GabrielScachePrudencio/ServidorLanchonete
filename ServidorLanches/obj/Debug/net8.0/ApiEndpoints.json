@@ -26,10 +26,36 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ServidorLanches.Controllers.AdministrativoController",
+    "Method": "Update",
+    "RelativePath": "api/auth/atualizar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "config",
+        "Type": "ServidorLanches.model.ConfiguracoesGerais",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServidorLanches.Controllers.CardapioController",
     "Method": "GetAllCardapios",
     "RelativePath": "api/auth/cardapio-completo",
     "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.AdministrativoController",
+    "Method": "GetConfiguracoesGerais",
+    "RelativePath": "api/auth/configuracoes-gerais",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],

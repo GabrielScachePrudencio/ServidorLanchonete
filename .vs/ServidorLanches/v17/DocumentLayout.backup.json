@@ -3,12 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\repository\\administrativorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\administrativorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\controllers\\administrativocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\administrativocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\model\\configuracoesgerais.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\configuracoesgerais.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\service\\administrativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\administrativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\service\\pedidosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\pedidosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\service\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\repository\\cardapiorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\cardapiorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\model\\cardapio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\cardapio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,16 +55,8 @@
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\model\\itempedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,32 +71,8 @@
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\service\\pedidosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\pedidosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\repository\\pedidosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\pedidosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\controllers\\cardapiocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\cardapiocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\repository\\cardapiorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\cardapiorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\service\\cardapioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\cardapioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\extensions\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\extensions\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\model\\cardapio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\cardapio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\net\\wpf\\servidorlanches\\servidorlanches\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -82,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,7 +94,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
+              "Title": "AdministrativoService.cs",
+              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\service\\AdministrativoService.cs",
+              "RelativeDocumentMoniker": "ServidorLanches\\service\\AdministrativoService.cs",
+              "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\service\\AdministrativoService.cs",
+              "RelativeToolTip": "ServidorLanches\\service\\AdministrativoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T02:49:08.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdministrativoController.cs",
+              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\Controllers\\AdministrativoController.cs",
+              "RelativeDocumentMoniker": "ServidorLanches\\Controllers\\AdministrativoController.cs",
+              "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\Controllers\\AdministrativoController.cs",
+              "RelativeToolTip": "ServidorLanches\\Controllers\\AdministrativoController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAswA8AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T02:52:53.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ConfiguracoesGerais.cs",
+              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\ConfiguracoesGerais.cs",
+              "RelativeDocumentMoniker": "ServidorLanches\\model\\ConfiguracoesGerais.cs",
+              "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\ConfiguracoesGerais.cs",
+              "RelativeToolTip": "ServidorLanches\\model\\ConfiguracoesGerais.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T02:43:57.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdministrativoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\repository\\AdministrativoRepository.cs",
+              "RelativeDocumentMoniker": "ServidorLanches\\repository\\AdministrativoRepository.cs",
+              "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\repository\\AdministrativoRepository.cs",
+              "RelativeToolTip": "ServidorLanches\\repository\\AdministrativoRepository.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvxYAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T02:42:48.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\LoginRequest.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\LoginRequest.cs",
@@ -102,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "LoginController.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\Controllers\\LoginController.cs",
@@ -115,68 +171,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "enums.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\enums.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\enums.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\enums.cs",
               "RelativeToolTip": "ServidorLanches\\model\\enums.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAiwC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-11T22:32:07.049Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PedidosRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\repository\\PedidosRepository.cs",
-              "RelativeDocumentMoniker": "ServidorLanches\\repository\\PedidosRepository.cs",
-              "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\repository\\PedidosRepository.cs",
-              "RelativeToolTip": "ServidorLanches\\repository\\PedidosRepository.cs",
-              "ViewState": "AgIAANIAAAAAAAAAAAAAAO8AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-09T02:21:13.193Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CardapioService.cs",
-              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\service\\CardapioService.cs",
-              "RelativeDocumentMoniker": "ServidorLanches\\service\\CardapioService.cs",
-              "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\service\\CardapioService.cs",
-              "RelativeToolTip": "ServidorLanches\\service\\CardapioService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T02:06:49.896Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 7,
               "Title": "CardapioRepository.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\repository\\CardapioRepository.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\repository\\CardapioRepository.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\repository\\CardapioRepository.cs",
               "RelativeToolTip": "ServidorLanches\\repository\\CardapioRepository.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAowC4AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwA4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T02:06:37.423Z"
+              "WhenOpened": "2026-01-08T02:06:37.423Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CardapioController.cs",
-              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\Controllers\\CardapioController.cs",
-              "RelativeDocumentMoniker": "ServidorLanches\\Controllers\\CardapioController.cs",
-              "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\Controllers\\CardapioController.cs",
-              "RelativeToolTip": "ServidorLanches\\Controllers\\CardapioController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T02:06:19.523Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\repository\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\repository\\UsuarioRepository.cs",
@@ -189,7 +210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "PedidoController.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\Controllers\\PedidoController.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\Controllers\\PedidoController.cs",
@@ -202,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 5,
               "Title": "PedidosService.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\service\\PedidosService.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\service\\PedidosService.cs",
@@ -210,11 +231,12 @@
               "RelativeToolTip": "ServidorLanches\\service\\PedidosService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T01:34:06.988Z"
+              "WhenOpened": "2026-01-05T01:34:06.988Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "SessionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\extensions\\SessionExtensions.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\extensions\\SessionExtensions.cs",
@@ -226,7 +248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "UsuarioService.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\service\\UsuarioService.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\service\\UsuarioService.cs",
@@ -239,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 14,
               "Title": "ItemPedido.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\ItemPedido.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\ItemPedido.cs",
@@ -251,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "Pedido.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\Pedido.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\Pedido.cs",
@@ -263,19 +285,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 8,
               "Title": "Cardapio.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\Cardapio.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\Cardapio.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\Cardapio.cs",
               "RelativeToolTip": "ServidorLanches\\model\\Cardapio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T03:10:06.673Z"
+              "WhenOpened": "2026-01-04T03:10:06.673Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\model\\Usuario.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\Usuario.cs",
@@ -288,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\appsettings.json",
               "RelativeDocumentMoniker": "ServidorLanches\\appsettings.json",
@@ -300,15 +323,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\Program.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\Program.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\Program.cs",
               "RelativeToolTip": "ServidorLanches\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACoAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-04T02:00:37.025Z"
+              "WhenOpened": "2026-01-04T02:00:37.025Z",
+              "EditorCaption": ""
             }
           ]
         }
