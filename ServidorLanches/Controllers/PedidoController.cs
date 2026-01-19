@@ -5,69 +5,76 @@ using ServidorLanches.service;
 namespace ServidorLanches.Controllers
 {
     [ApiController]
-    [Route("api/auth")]
+    [Route("api/pedidos")]
     public class PedidoController : ControllerBase
     {
-        private readonly PedidosService _pedidosService;
+        private readonly PedidosService _service;
+
         public PedidoController(PedidosService pedidosService)
         {
-            _pedidosService = pedidosService;
+            _service = pedidosService;
         }
 
-        [HttpPost("all-pedidos")]
-        public IActionResult pegarTodosPedidos()
+        // GET ALL
+        [HttpGet]
+        public IActionResult GetAll()
         {
-            var pedidos = _pedidosService.pegarTodosOsPedidos();  
-            if(pedidos == null)
-            {
-                return Unauthorized(new {message = "Nenhum pedido encontrado."});
-            }   
+            var pedidos = _service.PegarTodosOsPedidos();
+            if (pedidos == null || pedidos.Count == 0)
+                return NotFound("Nenhum pedido encontrado.");
 
             return Ok(pedidos);
         }
 
-        [HttpPost("pedido-info")]
-        public IActionResult pegarPedidoEItensId([FromQuery] int idPedido)
+        // GET BY ID (com itens)
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
         {
-            var pedido = _pedidosService.pegarPedidoEItensById(idPedido);  
-            if(pedido == null)
-            {
-                return Unauthorized(new {message = "Nenhum pedido encontrado."});
-            }   
+            var pedido = _service.PegarPedidoComItens(id);
+            if (pedido == null)
+                return NotFound("Pedido não encontrado.");
 
             return Ok(pedido);
         }
 
-
-        //atualiza ou adiciona pedido e itens
-        [HttpPost("add-pedido-itens")]
-        public IActionResult addPedidoEItens([FromBody] model.Pedido novoPedido)
+        // ADD
+        [HttpPost]
+        public IActionResult Add([FromBody] Pedido pedido)
         {
-            if (novoPedido == null) return BadRequest("Dados inválidos.");
+            if (pedido == null)
+                return BadRequest("Dados inválidos.");
 
-            var pedidoExistente = _pedidosService.pegarPedidoEItensById(novoPedido.Id);
-            
+            var sucesso = _service.AdicionarPedidoComItens(pedido);
+            if (!sucesso)
+                return BadRequest("Erro ao adicionar pedido.");
 
-            if (pedidoExistente != null)
-            {
-                var atualizou = _pedidosService.atualizarPedido(novoPedido);
-                if (atualizou)
-                {
-                    return Ok(new { message = "Pedido adicionado com sucesso!" });
-                }
-            }
-            else
-            {
-                var adicionou = _pedidosService.addPedidoEItens(novoPedido);
-                if (adicionou)
-                {
-                    return Ok(new { message = "Pedido adicionado com sucesso!" });
-                }
-            }
+            return Ok(true);
+        }
 
-            return Unauthorized(new {message = "Não foi possível adicionar o pedido."});
-            
-        }   
+        // UPDATE
+        [HttpPut]
+        public IActionResult Update([FromBody] Pedido pedido)
+        {
+            if (pedido == null || pedido.Id <= 0)
+                return BadRequest("Pedido inválido.");
+
+            var sucesso = _service.AtualizarPedido(pedido);
+            if (!sucesso)
+                return BadRequest("Erro ao atualizar pedido.");
+
+            return Ok(true);
+        }
+
+        // DELETE
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var sucesso = _service.DeletarPedido(id);
+            if (!sucesso)
+                return NotFound("Pedido não encontrado.");
+
+            return Ok(true);
+        }
 
 
     }

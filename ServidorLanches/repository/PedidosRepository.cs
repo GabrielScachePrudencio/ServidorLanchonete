@@ -128,6 +128,29 @@ namespace ServidorLanches.repository
             return pedido;
         }
 
+        private List<ItemPedido> GetItensByPedidoId(int idPedido, MySqlConnection conn)
+        {
+            List<ItemPedido> itens = new();
+
+            string sql = "SELECT * FROM itens_pedido WHERE id_pedido = @id";
+            using var cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@id", idPedido);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                itens.Add(new ItemPedido
+                {
+                    Id = reader.GetInt32("id"),
+                    IdPedido = reader.GetInt32("id_pedido"),
+                    IdCardapio = reader.GetInt32("id_cardapio"),
+                    Quantidade = reader.GetInt32("quantidade"),
+                    PrecoUnitario = reader.GetDecimal("preco_unitario")
+                });
+            }
+
+            return itens;
+        }
 
 
         public bool addPedidoEItemsNovo(Pedido pedido)
@@ -241,6 +264,35 @@ namespace ServidorLanches.repository
         }
 
 
+        public bool DeletePedido(int id)
+        {
+            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            conn.Open();
+
+            using var transaction = conn.BeginTransaction();
+
+            try
+            {
+                string sqlItens = "DELETE FROM itens_pedido WHERE id_pedido = @id";
+                using var cmdItens = new MySqlCommand(sqlItens, conn, transaction);
+                cmdItens.Parameters.AddWithValue("@id", id);
+                cmdItens.ExecuteNonQuery();
+
+                string sqlPedido = "DELETE FROM pedidos WHERE id = @id";
+                using var cmdPedido = new MySqlCommand(sqlPedido, conn, transaction);
+                cmdPedido.Parameters.AddWithValue("@id", id);
+
+                int linhas = cmdPedido.ExecuteNonQuery();
+
+                transaction.Commit();
+                return linhas > 0;
+            }
+            catch
+            {
+                transaction.Rollback();
+                return false;
+            }
+        }
 
     }
 }

@@ -1,34 +1,8 @@
 [
   {
-    "ContainingType": "ServidorLanches.Controllers.PedidoController",
-    "Method": "addPedidoEItens",
-    "RelativePath": "api/auth/add-pedido-itens",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "novoPedido",
-        "Type": "ServidorLanches.model.Pedido",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ServidorLanches.Controllers.PedidoController",
-    "Method": "pegarTodosPedidos",
-    "RelativePath": "api/auth/all-pedidos",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ServidorLanches.Controllers.AdministrativoController",
-    "Method": "Update",
-    "RelativePath": "api/auth/atualizar",
+    "ContainingType": "AdministrativoController",
+    "Method": "UpdateConfiguracoes",
+    "RelativePath": "api/administrativo/configuracoes",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -42,23 +16,71 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ServidorLanches.Controllers.CardapioController",
-    "Method": "GetAllCardapios",
-    "RelativePath": "api/auth/cardapio-completo",
-    "HttpMethod": "POST",
+    "ContainingType": "AdministrativoController",
+    "Method": "GetConfiguracoesGerais",
+    "RelativePath": "api/administrativo/configuracoes-gerais",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ServidorLanches.Controllers.AdministrativoController",
-    "Method": "GetConfiguracoesGerais",
-    "RelativePath": "api/auth/configuracoes-gerais",
+    "ContainingType": "AdministrativoController",
+    "Method": "TodosUsuarios",
+    "RelativePath": "api/administrativo/usuarios",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "AddUsuario",
+    "RelativePath": "api/administrativo/usuarios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "novoUsuario",
+        "Type": "ServidorLanches.model.Usuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "AtualizarUsuario",
+    "RelativePath": "api/administrativo/usuarios",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "ServidorLanches.model.Usuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "DeletarUsuario",
+    "RelativePath": "api/administrativo/usuarios/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -88,22 +110,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ServidorLanches.Controllers.PedidoController",
-    "Method": "pegarPedidoEItensId",
-    "RelativePath": "api/auth/pedido-info",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "idPedido",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "ServidorLanches.Controllers.LoginController",
     "Method": "UsuarioLogado",
     "RelativePath": "api/auth/usuario-logado",
@@ -111,6 +117,154 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.CardapioController",
+    "Method": "GetAll",
+    "RelativePath": "api/cardapio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.CardapioController",
+    "Method": "Add",
+    "RelativePath": "api/cardapio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cardapio",
+        "Type": "ServidorLanches.model.Cardapio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.CardapioController",
+    "Method": "Update",
+    "RelativePath": "api/cardapio",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cardapio",
+        "Type": "ServidorLanches.model.Cardapio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.CardapioController",
+    "Method": "GetById",
+    "RelativePath": "api/cardapio/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.CardapioController",
+    "Method": "Delete",
+    "RelativePath": "api/cardapio/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.PedidoController",
+    "Method": "GetAll",
+    "RelativePath": "api/pedidos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.PedidoController",
+    "Method": "Add",
+    "RelativePath": "api/pedidos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedido",
+        "Type": "ServidorLanches.model.Pedido",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.PedidoController",
+    "Method": "Update",
+    "RelativePath": "api/pedidos",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedido",
+        "Type": "ServidorLanches.model.Pedido",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.PedidoController",
+    "Method": "GetById",
+    "RelativePath": "api/pedidos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.PedidoController",
+    "Method": "Delete",
+    "RelativePath": "api/pedidos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

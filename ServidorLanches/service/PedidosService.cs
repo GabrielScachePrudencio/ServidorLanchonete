@@ -5,30 +5,26 @@ namespace ServidorLanches.service
 {
     public class PedidosService
     {
-        private readonly PedidosRepository _pedidosRepository;
+        private readonly PedidosRepository _repository;
 
         public PedidosService(PedidosRepository pedidosRepository)
         {
-            _pedidosRepository = pedidosRepository;
-        }   
-    
-        public List<Pedido> pegarTodosOsPedidos()
-        {
-            return _pedidosRepository.getAllPedidos();
-        }
-        public Pedido pegarPedidoEItensById(int id)
-        {
-            return _pedidosRepository.GetPedidoItensById(id);
+            _repository = pedidosRepository;
         }
 
-        
-        public bool addPedidoEItens(Pedido novoPedido)
-        {
-            return _pedidosRepository.addPedidoEItemsNovo(novoPedido);
-        }
-        public bool atualizarPedido(Pedido novoPedido)
-        {
-            return _pedidosRepository.AtualizarPedido(novoPedido);
-        }
+        public List<Pedido> PegarTodosOsPedidos()
+            => _repository.getAllPedidos();
+
+        public Pedido PegarPedidoComItens(int id)
+            => _repository.GetPedidoItensById(id);
+
+        public bool AdicionarPedidoComItens(Pedido pedido)
+            => _repository.addPedidoEItemsNovo(pedido);
+
+        public bool AtualizarPedido(Pedido pedido)
+            => _repository.AtualizarPedido(pedido);
+
+        public bool DeletarPedido(int id)
+            => _repository.DeletePedido(id);
     }
 }
