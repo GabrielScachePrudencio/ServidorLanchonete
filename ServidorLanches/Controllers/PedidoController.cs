@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServidorLanches.model;
+using ServidorLanches.model.dto;
 using ServidorLanches.service;
 
 namespace ServidorLanches.Controllers
@@ -19,27 +20,27 @@ namespace ServidorLanches.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var pedidos = _service.PegarTodosOsPedidos();
-            if (pedidos == null || pedidos.Count == 0)
+            var pedidosDTOS = _service.PegarTodosOsPedidos();
+            if (pedidosDTOS == null || pedidosDTOS.Count == 0)
                 return NotFound("Nenhum pedido encontrado.");
 
-            return Ok(pedidos);
+            return Ok(pedidosDTOS);
         }
 
         // GET BY ID (com itens)
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var pedido = _service.PegarPedidoComItens(id);
-            if (pedido == null)
+            var pedidoDTO = _service.PegarPedidoComItens(id);
+            if (pedidoDTO == null)
                 return NotFound("Pedido não encontrado.");
 
-            return Ok(pedido);
+            return Ok(pedidoDTO);
         }
 
         // ADD
         [HttpPost]
-        public IActionResult Add([FromBody] Pedido pedido)
+        public IActionResult Add([FromBody] PedidoDTO pedido)
         {
             if (pedido == null)
                 return BadRequest("Dados inválidos.");
@@ -53,12 +54,12 @@ namespace ServidorLanches.Controllers
 
         // UPDATE
         [HttpPut]
-        public IActionResult Update([FromBody] Pedido pedido)
+        public IActionResult Update([FromBody] PedidoDTO pedidoDTO)
         {
-            if (pedido == null || pedido.Id <= 0)
+            if (pedidoDTO == null || pedidoDTO.Id <= 0)
                 return BadRequest("Pedido inválido.");
 
-            var sucesso = _service.AtualizarPedido(pedido);
+            var sucesso = _service.AtualizarPedido(pedidoDTO);
             if (!sucesso)
                 return BadRequest("Erro ao atualizar pedido.");
 

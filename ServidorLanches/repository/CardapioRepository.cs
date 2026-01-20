@@ -39,7 +39,8 @@ namespace ServidorLanches.repository
                     Nome = reader.GetString("nome"),
                     Categoria = reader.GetString("categoria"),
                     Valor = reader.GetDecimal("valor"),
-                    Disponivel = reader.GetBoolean("disponivel")
+                    Disponivel = reader.GetBoolean("disponivel"),
+                    pathImg = reader.GetString("pathImg")
                 });
             }
 
@@ -66,7 +67,8 @@ namespace ServidorLanches.repository
                 Nome = reader.GetString("nome"),
                 Categoria = reader.GetString("categoria"),
                 Valor = reader.GetDecimal("valor"),
-                Disponivel = reader.GetBoolean("disponivel")
+                Disponivel = reader.GetBoolean("disponivel"),
+                pathImg = reader.GetString("pathImg")
             };
         }
 
@@ -85,6 +87,7 @@ namespace ServidorLanches.repository
             cmd.Parameters.AddWithValue("@categoria", cardapio.Categoria);
             cmd.Parameters.AddWithValue("@valor", cardapio.Valor);
             cmd.Parameters.AddWithValue("@disponivel", cardapio.Disponivel);
+            cmd.Parameters.AddWithValue("@pathImg", cardapio.pathImg);
 
             return cmd.ExecuteNonQuery() > 0;
         }
@@ -108,6 +111,7 @@ namespace ServidorLanches.repository
             cmd.Parameters.AddWithValue("@valor", cardapio.Valor);
             cmd.Parameters.AddWithValue("@disponivel", cardapio.Disponivel);
             cmd.Parameters.AddWithValue("@id", cardapio.Id);
+            cmd.Parameters.AddWithValue("@pathImg", cardapio.pathImg);
 
             return cmd.ExecuteNonQuery() > 0;
         }

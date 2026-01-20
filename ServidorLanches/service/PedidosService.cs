@@ -1,4 +1,5 @@
 ﻿using ServidorLanches.model;
+using ServidorLanches.model.dto;
 using ServidorLanches.repository;
 
 namespace ServidorLanches.service
@@ -12,16 +13,16 @@ namespace ServidorLanches.service
             _repository = pedidosRepository;
         }
 
-        public List<Pedido> PegarTodosOsPedidos()
-            => _repository.getAllPedidos();
+        public List<PedidoDTO> PegarTodosOsPedidos()
+            => _repository.GetAllPedidos();
 
-        public Pedido PegarPedidoComItens(int id)
-            => _repository.GetPedidoItensById(id);
+        public PedidoDTO PegarPedidoComItens(int id)
+            => _repository.GetPedidoById(id);
 
-        public bool AdicionarPedidoComItens(Pedido pedido)
-            => _repository.addPedidoEItemsNovo(pedido);
+        public bool AdicionarPedidoComItens(PedidoDTO pedido)
+            => _repository.AddPedido(pedido);
 
-        public bool AtualizarPedido(Pedido pedido)
+        public bool AtualizarPedido(PedidoDTO pedido)
             => _repository.AtualizarPedido(pedido);
 
         public bool DeletarPedido(int id)

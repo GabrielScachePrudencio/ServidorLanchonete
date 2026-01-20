@@ -329,17 +329,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Pedido"
+                "$ref": "#/components/schemas/PedidoDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Pedido"
+                "$ref": "#/components/schemas/PedidoDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Pedido"
+                "$ref": "#/components/schemas/PedidoDTO"
               }
             }
           }
@@ -358,17 +358,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Pedido"
+                "$ref": "#/components/schemas/PedidoDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Pedido"
+                "$ref": "#/components/schemas/PedidoDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Pedido"
+                "$ref": "#/components/schemas/PedidoDTO"
               }
             }
           }
@@ -448,6 +448,10 @@
           },
           "disponivel": {
             "type": "boolean"
+          },
+          "pathImg": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -482,28 +486,32 @@
         },
         "additionalProperties": false
       },
-      "ItemPedido": {
+      "ItemPedidoCardapioDTO": {
         "type": "object",
         "properties": {
-          "id": {
+          "quantidade": {
             "type": "integer",
             "format": "int32"
           },
-          "idPedido": {
-            "type": "integer",
-            "format": "int32"
+          "valorUnitario": {
+            "type": "number",
+            "format": "double"
           },
           "idCardapio": {
             "type": "integer",
             "format": "int32"
           },
-          "quantidade": {
-            "type": "integer",
-            "format": "int32"
+          "nomeCardapio": {
+            "type": "string",
+            "nullable": true
           },
-          "precoUnitario": {
-            "type": "number",
-            "format": "double"
+          "pahCardapioImg": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoria": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -522,7 +530,7 @@
         },
         "additionalProperties": false
       },
-      "Pedido": {
+      "PedidoDTO": {
         "type": "object",
         "properties": {
           "id": {
@@ -549,14 +557,10 @@
             "type": "string",
             "format": "date-time"
           },
-          "dataEntrega": {
-            "type": "string",
-            "format": "date-time"
-          },
           "itens": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ItemPedido"
+              "$ref": "#/components/schemas/ItemPedidoCardapioDTO"
             },
             "nullable": true
           }

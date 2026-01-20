@@ -213,7 +213,7 @@
     "Parameters": [
       {
         "Name": "pedido",
-        "Type": "ServidorLanches.model.Pedido",
+        "Type": "ServidorLanches.model.dto.PedidoDTO",
         "IsRequired": true
       }
     ],
@@ -228,8 +228,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "pedido",
-        "Type": "ServidorLanches.model.Pedido",
+        "Name": "pedidoDTO",
+        "Type": "ServidorLanches.model.dto.PedidoDTO",
         "IsRequired": true
       }
     ],

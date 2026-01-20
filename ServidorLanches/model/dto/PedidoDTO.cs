@@ -1,8 +1,6 @@
-﻿using ServidorLanches.model.dto;
-
-namespace ServidorLanches.model
+﻿namespace ServidorLanches.model.dto
 {
-    public class Pedido
+    public class PedidoDTO
     {
         public int Id { get; set; }
         public int IdUsuario { get; set; }
@@ -10,9 +8,7 @@ namespace ServidorLanches.model
         public string StatusPedido { get; set; }
         public decimal ValorTotal { get; set; }
         public DateTime DataCriacao { get; set; }
-        public DateTime DataEntrega { get; set; }
-        public string pahCardapioImg { get; set; }
-        
-        public List<ItemPedidoCardapioDTO> Itens { get; set; }
+
+        public List<ItemPedidoCardapioDTO> Itens { get; set; } = new();
     }
 }

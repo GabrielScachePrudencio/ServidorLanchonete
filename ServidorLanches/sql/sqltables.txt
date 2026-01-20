@@ -1,9 +1,13 @@
 CREATE DATABASE Lanches;
 
-drop table configuracoesGerais;
-
+drop database lanches;
+drop table cardapio;
+drop table itens_pedido;
 create database lanches;
 use lanches;
+
+
+
 
 create TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -13,14 +17,14 @@ create TABLE usuarios (
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     tipoUsuario varchar(100) not null
 );
- 
+
 create table cardapio (       
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
 	categoria varchar(20),
     valor DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
-    disponivel BOOLEAN DEFAULT TRUE
-    
+    disponivel BOOLEAN DEFAULT TRUE,
+    pathImg varchar(100)
 );
 
 create table pedidos(
@@ -54,6 +58,33 @@ create table configuracoesGerais (
     
   );
 
+CREATE TABLE configuracoes_fiscais (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cnpj VARCHAR(18) NOT NULL,
+    inscricao_estadual VARCHAR(20),
+    regime_tributario VARCHAR(50),
+    ambiente ENUM('HOMOLOGACAO','PRODUCAO') NOT NULL,
+    serie_nf VARCHAR(10),
+    numero_inicial_nf INT,
+    aliquota_padrao DECIMAL(5,2),
+    codigo_serie_nf VARCHAR(50)
+);
+
+CREATE TABLE formas_pagamento (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL,
+    ativo BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE cupons_desconto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codigo VARCHAR(20) UNIQUE NOT NULL,
+    percentual DECIMAL(5,2),
+    valor_fixo DECIMAL(10,2),
+    data_validade DATE,
+    ativo BOOLEAN DEFAULT TRUE
+);
+
 
 
 INSERT INTO usuarios (nome, email, senha, tipoUsuario) VALUES
@@ -62,13 +93,13 @@ INSERT INTO usuarios (nome, email, senha, tipoUsuario) VALUES
 ('gabriel', 'gasbriel@email.com', 'gabriel', 'Vendedor');
 
 
-INSERT INTO cardapio (nome, categoria, valor, disponivel) VALUES
-('X-Burguer Clássico', 'lanche', 25.90, TRUE),
-('X-Salada Especial', 'lanche', 28.50, TRUE),
-('Batata Frita G', 'acompanhamento', 15.00, TRUE),
-('Suco de Laranja 500ml', 'bebida', 12.00, TRUE),
-('Refrigerante Lata', 'bebida', 6.50, TRUE),
-('Pudim de Leite', 'sobremesa', 10.00, TRUE);
+INSERT INTO cardapio (nome, categoria, valor, disponivel, pathImg) VALUES
+('X-Burguer Clássico', 'lanche', 25.90, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/xburguer.jpg'),
+('X-Salada Especial', 'lanche', 28.50, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/xsalada.jpg'),
+('Batata Frita G', 'acompanhamento', 15.00, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/batatafrita.png'),
+('Suco de Laranja 500ml', 'bebida', 12.00, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/sucodelaranja.jpg'),
+('Refrigerante Lata', 'bebida', 6.50, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/cocacola.jpg'),
+('Pudim de Leite', 'sobremesa', 10.00, TRUE,  'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/pudimdeleite.jpg');
 
 INSERT INTO pedidos (id_usuario, cpf_cliente, status_pedido, valor_total) VALUES
 (1, '12345678901', 'entregue', 47.40),
@@ -92,17 +123,17 @@ VALUES
   '(11) 11111-1111',
   'gabriel@gmail.com',
   'rua tal tal tal',
-  'C:/Users/Flavio/Desktop/Net/wpf/ServidorLanches/ServidorLanches/imgs/logo/gabrielLanches.png'
+  'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/logo/gabrielLanches.png'
 );
+
 
 select * from usuarios;
 select * from cardapio;
 select * from pedidos;
 select * from itens_pedido;
 select * from configuracoesGerais;
-
-
-
-
+select * from configuracoes_fiscais;
+select * from formas_pagamento;
+select * from cupons_desconto;
 
 
