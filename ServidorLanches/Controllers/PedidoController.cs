@@ -59,11 +59,26 @@ namespace ServidorLanches.Controllers
             if (pedidoDTO == null || pedidoDTO.Id <= 0)
                 return BadRequest("Pedido inválido.");
 
-            var sucesso = _service.AtualizarPedido(pedidoDTO);
-            if (!sucesso)
-                return BadRequest("Erro ao atualizar pedido.");
+            var resultado = _service.AtualizarPedido(pedidoDTO);
 
-            return Ok(true);
+            if (resultado)
+               return Ok(resultado);
+
+            return BadRequest(resultado);
+
+        }
+
+        // UPDATE STATUS APENAS
+        [HttpPut("{id}/status/{novostatus}")]
+        public IActionResult UpdateStatus(int id, string novoStatus)
+        {
+            // Chama o serviço passando apenas o ID e o novo Enum
+            var resultado = _service.AtualizarStatusSomente(id, novoStatus);
+
+            if (resultado == "ok")
+                return Ok(resultado);
+
+            return BadRequest(resultado);
         }
 
         // DELETE

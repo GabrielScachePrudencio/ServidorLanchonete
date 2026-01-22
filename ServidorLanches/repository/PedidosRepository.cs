@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Configuration;
 using ServidorLanches.model.dto;
+using ServidorLanches.model;
 
 namespace ServidorLanches.repository
 {
@@ -220,41 +221,76 @@ namespace ServidorLanches.repository
 
             try
             {
+                // Atualiza pedido
                 string sqlPedido = @"
-                    UPDATE pedidos
-                    SET cpf_cliente = @cpf_cliente,
-                        valor_total = @valor_total
-                    WHERE id = @id;
-                ";
+            UPDATE pedidos
+            SET cpf_cliente = @cpf_cliente,
+                valor_total = @valor_total,
+                status_pedido = @status_pedido
+            WHERE id = @id;
+        ";
 
                 using var cmdPedido = new MySqlCommand(sqlPedido, conn, transaction);
                 cmdPedido.Parameters.AddWithValue("@cpf_cliente", pedido.CpfCliente);
                 cmdPedido.Parameters.AddWithValue("@valor_total", pedido.ValorTotal);
+                cmdPedido.Parameters.AddWithValue("@status_pedido", pedido.StatusPedido.ToString());
                 cmdPedido.Parameters.AddWithValue("@id", pedido.Id);
                 cmdPedido.ExecuteNonQuery();
 
+                // REMOVE todos os itens antigos
+                string deleteItens = "DELETE FROM itens_pedido WHERE id_pedido = @id_pedido;";
+                using var cmdDelete = new MySqlCommand(deleteItens, conn, transaction);
+                cmdDelete.Parameters.AddWithValue("@id_pedido", pedido.Id);
+                cmdDelete.ExecuteNonQuery();
+
+                // INSERE os itens atuais
                 foreach (var item in pedido.Itens)
                 {
-                    string sqlItem = @"
-                        UPDATE itens_pedido
-                        SET quantidade = @quantidade
-                        WHERE id_pedido = @id_pedido AND id_cardapio = @id_cardapio;
-                    ";
+                    string sqlInsert = @"
+                INSERT INTO itens_pedido (id_pedido, id_cardapio, quantidade, preco_unitario)
+                VALUES (@id_pedido, @id_cardapio, @quantidade, @preco_unitario);
+            ";
 
-                    using var cmdItem = new MySqlCommand(sqlItem, conn, transaction);
-                    cmdItem.Parameters.AddWithValue("@quantidade", item.Quantidade);
+                    using var cmdItem = new MySqlCommand(sqlInsert, conn, transaction);
                     cmdItem.Parameters.AddWithValue("@id_pedido", pedido.Id);
                     cmdItem.Parameters.AddWithValue("@id_cardapio", item.IdCardapio);
+                    cmdItem.Parameters.AddWithValue("@quantidade", item.Quantidade);
+                    cmdItem.Parameters.AddWithValue("@preco_unitario", item.ValorUnitario);
                     cmdItem.ExecuteNonQuery();
                 }
 
                 transaction.Commit();
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
                 transaction.Rollback();
                 return false;
+            }
+        }
+
+
+        public string AtualizarStatusDoPedidoById(int id, string status)
+        {
+            using var conn = new MySqlConnection(GetConnectionString());
+            try
+            {
+                conn.Open();
+                // SQL simples: apenas o texto do status
+                string sql = "UPDATE pedidos SET status_pedido = @status WHERE id = @id";
+                using var cmd = new MySqlCommand(sql, conn);
+
+                // O segredo está no .ToString() aqui embaixo!
+                cmd.Parameters.AddWithValue("@status", status);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+
+
+                return "ok";
+            }
+            catch (Exception e)
+            {
+                return e.Message + e.StackTrace;
             }
         }
 

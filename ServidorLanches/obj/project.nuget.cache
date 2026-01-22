@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0BA8EhXOMhM=",
+  "dgSpecHash": "jZOPPiCpG54=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Flavio\\Desktop\\Net\\wpf\\ServidorLanches\\ServidorLanches\\ServidorLanches.csproj",
+  "projectFilePath": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\ServidorLanches.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Flavio\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
     "C:\\Users\\Flavio\\.nuget\\packages\\google.protobuf\\3.32.0\\google.protobuf.3.32.0.nupkg.sha512",
