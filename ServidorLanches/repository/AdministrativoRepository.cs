@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ServidorLanches.model;
+using System.Data;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace ServidorLanches.repository
 {
@@ -70,7 +72,60 @@ namespace ServidorLanches.repository
             return cmd.ExecuteNonQuery() > 0;
         }
 
+        public List<CategoriaProduto> GetCategoriaProdutos()
+        {
+            using var conn = new MySqlConnection(
+                _config.GetConnectionString("MySql")
+            );
 
+            conn.Open();
+            List<CategoriaProduto> lista = new List<CategoriaProduto>();
+            string sql = "SELECT * FROM categoriaProduto";
+
+            using (var cmd = new MySqlCommand(sql, conn))
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    lista.Add(new CategoriaProduto() {
+                        id = reader.GetInt32("id"),
+                        nome = reader.GetString("nome")
+                    } 
+                    );
+                }
+            }
+
+            return lista;
+        }
+
+        public List<TipoStatusPedido> GetStatusPedido()
+        {
+            using var conn = new MySqlConnection(
+                _config.GetConnectionString("MySql")
+            );
+
+            conn.Open();
+            List<TipoStatusPedido> lista = new List<TipoStatusPedido>();
+            string sql = "SELECT * FROM statuspedido";
+
+            using (var cmd = new MySqlCommand(sql, conn))
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    lista.Add(new TipoStatusPedido()
+                    {
+                        id = reader.GetInt32("id"),
+                        nome = reader.GetString("nome")
+                    }
+                    );
+                }
+            }
+
+            return lista;
+        }
 
 
     }

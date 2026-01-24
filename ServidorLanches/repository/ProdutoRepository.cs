@@ -3,11 +3,11 @@ using ServidorLanches.model;
 
 namespace ServidorLanches.repository
 {
-    public class CardapioRepository
+    public class ProdutoRepository
     {
         private readonly IConfiguration _config;
 
-        public CardapioRepository(IConfiguration config)
+        public ProdutoRepository(IConfiguration config)
         {
             _config = config;
         }
@@ -20,40 +20,40 @@ namespace ServidorLanches.repository
         }
 
         // GET ALL
-        public List<Cardapio> GetAll()
+        public List<Produto> GetAll()
         {
             using var conn = GetConnection();
             conn.Open();
 
-            List<Cardapio> cardapios = new();
+            List<Produto> produtos = new();
 
-            string sql = "SELECT * FROM cardapio";
+            string sql = "SELECT * FROM produtos";
             using var cmd = new MySqlCommand(sql, conn);
             using var reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                cardapios.Add(new Cardapio
+                produtos.Add(new Produto
                 {
                     Id = reader.GetInt32("id"),
                     Nome = reader.GetString("nome"),
-                    Categoria = reader.GetString("categoria"),
+                    IdCategoria = reader.GetInt32("id_categoria"),
                     Valor = reader.GetDecimal("valor"),
                     Disponivel = reader.GetBoolean("disponivel"),
                     pathImg = reader.GetString("pathImg")
                 });
             }
 
-            return cardapios;
+            return produtos;
         }
 
         // GET BY ID
-        public Cardapio GetById(int id)
+        public Produto GetById(int id)
         {
             using var conn = GetConnection();
             conn.Open();
 
-            string sql = "SELECT * FROM cardapio WHERE id = @id";
+            string sql = "SELECT * FROM produtos WHERE id = @id";
             using var cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@id", id);
 
@@ -61,11 +61,11 @@ namespace ServidorLanches.repository
             if (!reader.Read())
                 return null;
 
-            return new Cardapio
+            return new Produto
             {
                 Id = reader.GetInt32("id"),
                 Nome = reader.GetString("nome"),
-                Categoria = reader.GetString("categoria"),
+                IdCategoria = reader.GetInt32("id_categoria"),
                 Valor = reader.GetDecimal("valor"),
                 Disponivel = reader.GetBoolean("disponivel"),
                 pathImg = reader.GetString("pathImg")
@@ -73,45 +73,45 @@ namespace ServidorLanches.repository
         }
 
         // ADD
-        public bool Add(Cardapio cardapio)
+        public bool Add(Produto produto)
         {
             using var conn = GetConnection();
             conn.Open();
 
-            string sql = @"INSERT INTO cardapio
-                           (nome, categoria, valor, disponivel)
-                           VALUES (@nome, @categoria, @valor, @disponivel)";
+            string sql = @"INSERT INTO produtos
+                           (nome, id_categoria, valor, disponivel, pathImg)
+                           VALUES (@nome, @id_categoria, @valor, @disponivel, @pathImg)";
 
             using var cmd = new MySqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@nome", cardapio.Nome);
-            cmd.Parameters.AddWithValue("@categoria", cardapio.Categoria);
-            cmd.Parameters.AddWithValue("@valor", cardapio.Valor);
-            cmd.Parameters.AddWithValue("@disponivel", cardapio.Disponivel);
-            cmd.Parameters.AddWithValue("@pathImg", cardapio.pathImg);
+            cmd.Parameters.AddWithValue("@nome", produto.Nome);
+            cmd.Parameters.AddWithValue("@id_categoria", produto.IdCategoria);
+            cmd.Parameters.AddWithValue("@valor", produto.Valor);
+            cmd.Parameters.AddWithValue("@disponivel", produto.Disponivel);
+            cmd.Parameters.AddWithValue("@pathImg", produto.pathImg);
 
             return cmd.ExecuteNonQuery() > 0;
         }
 
         // UPDATE
-        public bool Update(Cardapio cardapio)
+        public bool Update(Produto produto)
         {
             using var conn = GetConnection();
             conn.Open();
 
-            string sql = @"UPDATE cardapio
+            string sql = @"UPDATE produtos
                            SET nome = @nome,
-                               categoria = @categoria,
+                               id_categoria = @id_categoria,
                                valor = @valor,
                                disponivel = @disponivel
                            WHERE id = @id";
 
             using var cmd = new MySqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@nome", cardapio.Nome);
-            cmd.Parameters.AddWithValue("@categoria", cardapio.Categoria);
-            cmd.Parameters.AddWithValue("@valor", cardapio.Valor);
-            cmd.Parameters.AddWithValue("@disponivel", cardapio.Disponivel);
-            cmd.Parameters.AddWithValue("@id", cardapio.Id);
-            cmd.Parameters.AddWithValue("@pathImg", cardapio.pathImg);
+            cmd.Parameters.AddWithValue("@nome", produto.Nome);
+            cmd.Parameters.AddWithValue("@id_categoria", produto.IdCategoria);
+            cmd.Parameters.AddWithValue("@valor", produto.Valor);
+            cmd.Parameters.AddWithValue("@disponivel", produto.Disponivel);
+            cmd.Parameters.AddWithValue("@id", produto.Id);
+            cmd.Parameters.AddWithValue("@pathImg", produto.pathImg);
 
             return cmd.ExecuteNonQuery() > 0;
         }
@@ -122,7 +122,7 @@ namespace ServidorLanches.repository
             using var conn = GetConnection();
             conn.Open();
 
-            string sql = "DELETE FROM cardapio WHERE id = @id";
+            string sql = "DELETE FROM produtos WHERE id = @id";
             using var cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@id", id);
 

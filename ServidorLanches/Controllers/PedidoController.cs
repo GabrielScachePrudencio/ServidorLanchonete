@@ -69,13 +69,13 @@ namespace ServidorLanches.Controllers
         }
 
         // UPDATE STATUS APENAS
-        [HttpPut("{id}/status/{novostatus}")]
-        public IActionResult UpdateStatus(int id, string novoStatus)
+        [HttpPut("{id}/status/{idnovoStatus}")]
+        public IActionResult UpdateStatus(int id, int idnovoStatus)
         {
             // Chama o serviço passando apenas o ID e o novo Enum
-            var resultado = _service.AtualizarStatusSomente(id, novoStatus);
+            var resultado = _service.AtualizarStatusSomente(id, idnovoStatus);
 
-            if (resultado == "ok")
+            if (resultado)
                 return Ok(resultado);
 
             return BadRequest(resultado);

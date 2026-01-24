@@ -24,6 +24,15 @@ namespace ServidorLanches.service
 
             return administrativoRepository.AtualizarConfiguracoes(config);
         }
+        
+        public List<CategoriaProduto> GetAllCategoria()
+        {
+            return administrativoRepository.GetCategoriaProdutos();
+        }
+        public List<TipoStatusPedido> GetAllStatusPedido()
+        {
+            return administrativoRepository.GetStatusPedido();
+        }
 
     }
 }

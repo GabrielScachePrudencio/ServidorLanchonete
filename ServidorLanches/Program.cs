@@ -31,8 +31,8 @@ builder.Services.AddScoped<UsuarioRepository>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<PedidosRepository>();
 builder.Services.AddScoped<PedidosService>();
-builder.Services.AddScoped<CardapioRepository>();
-builder.Services.AddScoped<CardapioService>();
+builder.Services.AddScoped<ProdutoRepository>();
+builder.Services.AddScoped<ProdutoService>();
 builder.Services.AddScoped<AdministrativoRepository>();
 builder.Services.AddScoped<AdministrativoService>();
 

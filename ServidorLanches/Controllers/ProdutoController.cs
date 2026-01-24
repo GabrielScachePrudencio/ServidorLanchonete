@@ -5,21 +5,21 @@ using ServidorLanches.service;
 namespace ServidorLanches.Controllers
 {
     [ApiController]
-    [Route("api/cardapio")]
-    public class CardapioController : ControllerBase
+    [Route("api/produtos")]
+    public class ProdutoController : ControllerBase
     {
-        private readonly CardapioService _service;
+        private readonly ProdutoService _service;
 
-        public CardapioController(CardapioService cardapioService)
+        public ProdutoController(ProdutoService produtoService)
         {
-            _service = cardapioService;
+            _service = produtoService;
         }
 
         // GET ALL
         [HttpGet]
         public IActionResult GetAll()
         {
-            var cardapios = _service.GetAllCardapios();
+            var cardapios = _service.GetAllProduto();
             if (cardapios == null || cardapios.Count == 0)
                 return NotFound("Nenhum item no cardápio encontrado.");
 
@@ -30,7 +30,7 @@ namespace ServidorLanches.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var item = _service.GetById(id);
+            var item = _service.GetByIdProduto(id);
             if (item == null)
                 return NotFound("Item não encontrado.");
 
@@ -39,9 +39,9 @@ namespace ServidorLanches.Controllers
 
         // ADD
         [HttpPost]
-        public IActionResult Add([FromBody] Cardapio cardapio)
+        public IActionResult Add([FromBody] Produto cardapio)
         {
-            var sucesso = _service.AddCardapio(cardapio);
+            var sucesso = _service.AddProduto(cardapio);
             if (!sucesso)
                 return BadRequest("Erro ao adicionar item.");
 
@@ -50,9 +50,9 @@ namespace ServidorLanches.Controllers
 
         // UPDATE
         [HttpPut]
-        public IActionResult Update([FromBody] Cardapio cardapio)
+        public IActionResult Update([FromBody] Produto cardapio)
         {
-            var sucesso = _service.UpdateCardapio(cardapio);
+            var sucesso = _service.UpdateProduto(cardapio);
             if (!sucesso)
                 return BadRequest("Erro ao atualizar item.");
 
@@ -63,7 +63,7 @@ namespace ServidorLanches.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var sucesso = _service.DeleteCardapio(id);
+            var sucesso = _service.DeleteProduto(id);
             if (!sucesso)
                 return NotFound("Item não encontrado.");
 

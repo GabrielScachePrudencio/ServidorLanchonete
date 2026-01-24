@@ -2,13 +2,13 @@
 {
     public class ItemPedidoCardapioDTO
     {
+        public int IdProduto { get; set; }
+        public string NomeProduto { get; set; }
+        public string Categoria { get; set; }
+        public string pathProdutoImg { get; set; }
+
         public int Quantidade { get; set; }
         public decimal ValorUnitario { get; set; }
-
-        public int IdCardapio { get; set; }
-        public string NomeCardapio { get; set; }
-        public string pahCardapioImg { get; set; }
-        public string Categoria { get; set; }
-
     }
+
 }

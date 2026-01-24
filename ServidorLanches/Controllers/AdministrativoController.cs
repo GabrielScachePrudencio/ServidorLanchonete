@@ -39,6 +39,33 @@ public class AdministrativoController : ControllerBase
         return Ok("Atualizado com sucesso");
     }
 
+
+    [HttpGet("categoria")]
+    public IActionResult getCategorias()
+    {
+        var lista = _administrativoService.GetAllCategoria();
+
+        if (lista == null || lista.Count == 0)
+            return NotFound("Nenhuma categoria encontrada");
+
+        return Ok(lista);
+    }
+
+
+    [HttpGet("statuspedido")]
+    public IActionResult getStatusDosPedidos()
+    {
+        var lista = _administrativoService.GetAllStatusPedido();
+
+        if (lista == null || lista.Count == 0)
+            return NotFound("Nenhum status encontrado");
+
+
+        return Ok(lista);
+    }
+
+
+
     // USUÁRIOS
     [HttpGet("usuarios")]
     public IActionResult TodosUsuarios()

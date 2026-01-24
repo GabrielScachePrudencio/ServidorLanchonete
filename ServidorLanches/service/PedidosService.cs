@@ -24,8 +24,8 @@ namespace ServidorLanches.service
 
         public bool AtualizarPedido(PedidoDTO pedido)
             => _repository.AtualizarPedido(pedido);
-        public string AtualizarStatusSomente(int id, string status)
-            => _repository.AtualizarStatusDoPedidoById(id, status);
+        public bool AtualizarStatusSomente(int id, int idstatus)
+            => _repository.AtualizarStatusDoPedidoById(id, idstatus);
 
         public bool DeletarPedido(int id)
             => _repository.DeletePedido(id);
