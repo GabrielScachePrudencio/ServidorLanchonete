@@ -29,5 +29,30 @@ namespace ServidorLanches.service
 
         public bool DeletarPedido(int id)
             => _repository.DeletePedido(id);
+
+
+        //estoque
+        public bool movimentarEstoque(PedidoDTO pedido)
+        {
+            // Adicionei o status 2 na verificação de SAÍDA
+            if (pedido.IdStatus == 5 || pedido.IdStatus == 2)
+            {
+                pedido.TipoMovimentacao = TipoMovimentacaoEstoque.SAIDA;
+                pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.VENDA;
+            }
+            else if (pedido.IdStatus == 6)
+            {
+                pedido.TipoMovimentacao = TipoMovimentacaoEstoque.ENTRADA;
+                pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.CANCELAMENTO;
+            }
+            else
+            {
+                pedido.TipoMovimentacao = TipoMovimentacaoEstoque.NENHUMA;
+            }
+
+            return _repository.MovimentarEstoque(pedido);
+        }
+
+
     }
 }

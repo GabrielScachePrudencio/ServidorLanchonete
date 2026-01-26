@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PDV_LANCHES.model;
 using ServidorLanches.model;
 using ServidorLanches.service;
 using ServidorLanches.Services;
@@ -40,6 +41,8 @@ public class AdministrativoController : ControllerBase
     }
 
 
+    //categorias do produto 
+
     [HttpGet("categoria")]
     public IActionResult getCategorias()
     {
@@ -51,7 +54,39 @@ public class AdministrativoController : ControllerBase
         return Ok(lista);
     }
 
+    [HttpPost("categoria")]
+    public IActionResult AddCategoria([FromBody] CategoriaProduto categoria)
+    {
+        var sucesso = _administrativoService.AddCategoria(categoria);
+        if (!sucesso)
+            return BadRequest("Erro ao adicionar categoria");
 
+        return Ok(true);
+    }
+
+    [HttpPut("categoria/{id}")]
+    public IActionResult UpdateCategoria(int id, [FromBody] CategoriaProduto categoria)
+    {
+        var sucesso = _administrativoService.UpdateCategoria(id, categoria);
+        if (!sucesso)
+            return BadRequest("Erro ao atualizar categoria");
+
+        return Ok(true);
+    }
+
+    [HttpDelete("categoria/{id}")]
+    public IActionResult DeleteCategoria(int id)
+    {
+        var sucesso = _administrativoService.DeleteCategoria(id);
+        if (!sucesso)
+            return NotFound("Categoria não encontrada");
+
+        return Ok(true);
+    }
+
+
+    //stauts pedidos 
+    
     [HttpGet("statuspedido")]
     public IActionResult getStatusDosPedidos()
     {
@@ -63,7 +98,122 @@ public class AdministrativoController : ControllerBase
 
         return Ok(lista);
     }
+    [HttpPost("statuspedido")]
+    public IActionResult AddStatusPedido([FromBody] TipoStatusPedido status)
+    {
+        var sucesso = _administrativoService.AddStatusPedido(status);
+        if (!sucesso)
+            return BadRequest("Erro ao criar status");
 
+        return Ok(true);
+    }
+
+    [HttpPut("statuspedido/{id}")]
+    public IActionResult UpdateStatusPedido(int id, [FromBody] TipoStatusPedido status)
+    {
+        var sucesso = _administrativoService.UpdateStatusPedido(id, status);
+        if (!sucesso)
+            return BadRequest("Erro ao atualizar status");
+
+        return Ok(true);
+    }
+
+    [HttpDelete("statuspedido/{id}")]
+    public IActionResult DeleteStatusPedido(int id)
+    {
+        var sucesso = _administrativoService.DeleteStatusPedido(id);
+        if (!sucesso)
+            return NotFound("Status não encontrado");
+
+        return Ok(true);
+    }
+
+
+
+    //formas de pagamentos 
+    [HttpGet("formasdepagamentos")]
+    public IActionResult getFormasDePagamentos()
+    {
+        var lista = _administrativoService.GetAllFormasDePagamentos();
+
+        if (lista == null || lista.Count == 0)
+            return NotFound("Nenhum formas de pagamentos encontrado");
+
+
+        return Ok(lista);
+    }
+
+    [HttpPost("formasdepagamentos")]
+    public IActionResult AddFormaPagamento([FromBody] FormaDePagamento forma)
+    {
+        var sucesso = _administrativoService.AddFormaPagamento(forma);
+        if (!sucesso)
+            return BadRequest("Erro ao adicionar forma de pagamento");
+
+        return Ok(true);
+    }
+
+    [HttpPut("formasdepagamentos/{id}")]
+    public IActionResult UpdateFormaPagamento(int id, [FromBody] FormaDePagamento forma)
+    {
+        var sucesso = _administrativoService.UpdateFormaPagamento(id, forma);
+        if (!sucesso)
+            return BadRequest("Erro ao atualizar forma de pagamento");
+
+        return Ok(true);
+    }
+
+    [HttpDelete("formasdepagamentos/{id}")]
+    public IActionResult DeleteFormaPagamento(int id)
+    {
+        var sucesso = _administrativoService.DeleteFormaPagamento(id);
+        if (!sucesso)
+            return NotFound("Forma de pagamento não encontrada");
+
+        return Ok(true);
+    }
+    //Cupons de desconto 
+    [HttpGet("cuponsDeDesconto")]
+    public IActionResult getCupomDesconto()
+    {
+        var lista = _administrativoService.GetAllCupons();
+
+        if (lista == null || lista.Count == 0)
+            return NotFound("Nenhum CupomDesconto encontrado");
+
+
+        return Ok(lista);
+    }
+
+    [HttpPost("cuponsDeDesconto")]
+    public IActionResult AddCupomDesconto([FromBody] CupomDesconto CupomDesconto)
+    {
+        var sucesso = _administrativoService.AddCupom(CupomDesconto);
+        if (!sucesso)
+            return BadRequest("Erro ao adicionar forma de pagamento");
+
+        return Ok(true);
+    }
+
+    [HttpPut("cuponsDeDesconto/{id}")]
+    public IActionResult UpdateCupomDesconto(int id, [FromBody] CupomDesconto CupomDesconto)
+    {
+        var sucesso = _administrativoService.UpdateCupom(id, CupomDesconto);
+        if (!sucesso)
+            return BadRequest("Erro ao atualizar forma de pagamento");
+
+        return Ok(true);
+    }
+
+    [HttpDelete("cuponsDeDesconto/{id}")]
+    public IActionResult DeleteCupomDescontoo(int id)
+    {
+        var sucesso = _administrativoService.DeleteCupom(id);
+        if (!sucesso)
+            return NotFound("Forma de pagamento não encontrada");
+
+        return Ok(true);
+    }
 
 
     // USUÁRIOS
@@ -106,4 +256,41 @@ public class AdministrativoController : ControllerBase
 
         return Ok(true);
     }
+
+
+    ///    Configuracoes ficais
+    [HttpGet("configuracoesFiscais")]
+    public IActionResult getConfiguracoesFiscais()
+    {
+        var configFisc = _administrativoService.GetConfiguracoesFiscais();
+
+        if (configFisc == null)
+            return NotFound("Nenhum GetConfiguracoesFiscais encontrado");
+
+
+        return Ok(configFisc);
+    }
+
+    [HttpPost("configuracoesFiscais")]
+    public IActionResult addConfiguracoesFiscais([FromBody] ConfiguracoesFiscais config)
+    {
+        var sucesso = _administrativoService.AddConfiguracoesFiscais(config);
+        if (!sucesso)
+            return BadRequest("Erro ao atualizar configurações");
+
+        return Ok("Atualizado com sucesso");
+    }
+
+    [HttpPut("configuracoesFiscais")]
+    public IActionResult atualizarConfiguracoesFiscais([FromBody] ConfiguracoesFiscais config)
+    {
+        var sucesso = _administrativoService.AtualizarConfigFiscal(config);
+        if (!sucesso)
+            return BadRequest("Erro ao atualizar configurações");
+
+        return Ok("Atualizado com sucesso");
+    }
+
+
+
 }

@@ -52,5 +52,19 @@ namespace ServidorLanches.model
         Administrador,
 
     }
+     public enum TipoMovimentacaoEstoque
+    {
+        NENHUMA = 0,
+        ENTRADA = 1,
+        SAIDA = 2
+    }
+    public enum OrigemMovimentacaoEstoque
+    {
+        VENDA = 1,
+        CANCELAMENTO = 2,
+        AJUSTE_MANUAL = 3,
+        DEVOLUCAO = 4
+    }
+
 
 }

@@ -92,6 +92,16 @@ namespace ServidorLanches.Controllers
             return Ok(true);
         }
 
+        // SOBRE O ESTOQUE
 
+        [HttpPost("estoque")]
+        public IActionResult movimentarEstoque(PedidoDTO pedido)
+        {
+            var sucesso = _service.movimentarEstoque(pedido);
+            if (!sucesso)
+                return NotFound("Pedido não encontrado.");
+
+            return Ok(true);
+        }
     }
 }

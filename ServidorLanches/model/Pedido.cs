@@ -12,7 +12,13 @@ namespace ServidorLanches.model
         public DateTime DataCriacao { get; set; }
         public DateTime DataEntrega { get; set; }
         public string pahCardapioImg { get; set; }
-        
+
+        public TipoMovimentacaoEstoque TipoMovimentacao { get; set; }
+        public OrigemMovimentacaoEstoque OrigemMovimentacaoEstoque { get; set; }
+
+
         public List<ItemPedidoCardapioDTO> Itens { get; set; }
+
+
     }
 }

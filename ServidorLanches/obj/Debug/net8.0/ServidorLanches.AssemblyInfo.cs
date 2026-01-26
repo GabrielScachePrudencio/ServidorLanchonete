@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServidorLanches")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2f006ce84f699b7e86e0f188e3903267b68bcc7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9938f77a5b71c6cf91560630c859bcadd37b614")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServidorLanches")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServidorLanches")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

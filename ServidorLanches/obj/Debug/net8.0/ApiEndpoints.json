@@ -11,6 +11,59 @@
   },
   {
     "ContainingType": "AdministrativoController",
+    "Method": "AddCategoria",
+    "RelativePath": "api/administrativo/categoria",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoria",
+        "Type": "ServidorLanches.model.CategoriaProduto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "UpdateCategoria",
+    "RelativePath": "api/administrativo/categoria/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "categoria",
+        "Type": "ServidorLanches.model.CategoriaProduto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "DeleteCategoria",
+    "RelativePath": "api/administrativo/categoria/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
     "Method": "UpdateConfiguracoes",
     "RelativePath": "api/administrativo/configuracoes",
     "HttpMethod": "PUT",
@@ -37,12 +90,233 @@
   },
   {
     "ContainingType": "AdministrativoController",
+    "Method": "getConfiguracoesFiscais",
+    "RelativePath": "api/administrativo/configuracoesFiscais",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "addConfiguracoesFiscais",
+    "RelativePath": "api/administrativo/configuracoesFiscais",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "config",
+        "Type": "ServidorLanches.model.ConfiguracoesFiscais",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "atualizarConfiguracoesFiscais",
+    "RelativePath": "api/administrativo/configuracoesFiscais",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "config",
+        "Type": "ServidorLanches.model.ConfiguracoesFiscais",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "getCupomDesconto",
+    "RelativePath": "api/administrativo/cuponsDeDesconto",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "AddCupomDesconto",
+    "RelativePath": "api/administrativo/cuponsDeDesconto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CupomDesconto",
+        "Type": "ServidorLanches.model.CupomDesconto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "UpdateCupomDesconto",
+    "RelativePath": "api/administrativo/cuponsDeDesconto/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "CupomDesconto",
+        "Type": "ServidorLanches.model.CupomDesconto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "DeleteCupomDescontoo",
+    "RelativePath": "api/administrativo/cuponsDeDesconto/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "getFormasDePagamentos",
+    "RelativePath": "api/administrativo/formasdepagamentos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "AddFormaPagamento",
+    "RelativePath": "api/administrativo/formasdepagamentos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "forma",
+        "Type": "PDV_LANCHES.model.FormaDePagamento",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "UpdateFormaPagamento",
+    "RelativePath": "api/administrativo/formasdepagamentos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "forma",
+        "Type": "PDV_LANCHES.model.FormaDePagamento",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "DeleteFormaPagamento",
+    "RelativePath": "api/administrativo/formasdepagamentos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
     "Method": "getStatusDosPedidos",
     "RelativePath": "api/administrativo/statuspedido",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "AddStatusPedido",
+    "RelativePath": "api/administrativo/statuspedido",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "ServidorLanches.model.TipoStatusPedido",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "UpdateStatusPedido",
+    "RelativePath": "api/administrativo/statuspedido/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "ServidorLanches.model.TipoStatusPedido",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdministrativoController",
+    "Method": "DeleteStatusPedido",
+    "RelativePath": "api/administrativo/statuspedido/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -229,6 +503,22 @@
       {
         "Name": "idnovoStatus",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.PedidoController",
+    "Method": "movimentarEstoque",
+    "RelativePath": "api/pedidos/estoque",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedido",
+        "Type": "ServidorLanches.model.dto.PedidoDTO",
         "IsRequired": true
       }
     ],
