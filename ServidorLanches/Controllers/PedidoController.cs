@@ -45,7 +45,7 @@ namespace ServidorLanches.Controllers
             if (pedido == null)
                 return BadRequest("Dados inválidos.");
 
-            var sucesso = _service.AdicionarPedidoComItens(pedido);
+            var sucesso = _service.CriarPedido(pedido);
             if (!sucesso)
                 return BadRequest("Erro ao adicionar pedido.");
 
@@ -94,14 +94,5 @@ namespace ServidorLanches.Controllers
 
         // SOBRE O ESTOQUE
 
-        [HttpPost("estoque")]
-        public IActionResult movimentarEstoque(PedidoDTO pedido)
-        {
-            var sucesso = _service.movimentarEstoque(pedido);
-            if (!sucesso)
-                return NotFound("Pedido não encontrado.");
-
-            return Ok(true);
-        }
     }
 }

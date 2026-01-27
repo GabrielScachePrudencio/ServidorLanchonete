@@ -2,13 +2,13 @@
 using Microsoft.Extensions.Configuration;
 using ServidorLanches.model.dto;
 using ServidorLanches.model;
+using ServidorLanches.service;
 
 namespace ServidorLanches.repository
 {
     public class PedidosRepository
     {
         private readonly IConfiguration _config;
-
         public PedidosRepository(IConfiguration config)
         {
             _config = config;
@@ -70,6 +70,19 @@ namespace ServidorLanches.repository
 
                 if (!pedidos.ContainsKey(pedidoId))
                 {
+
+                    string tipoStr = reader.IsDBNull(reader.GetOrdinal("TipoMovimentacao")) ? "NENHUMA" : reader.GetString("TipoMovimentacao");
+                    if (!Enum.TryParse<TipoMovimentacaoEstoque>(tipoStr, out var tipoResult))
+                    {
+                        tipoResult = TipoMovimentacaoEstoque.NENHUMA;
+                    }
+
+                    // Lógica para OrigemMovimentacao
+                    string origemStr = reader.IsDBNull(reader.GetOrdinal("OrigemMovimentacaoEstoque")) ? "PRONTO" : reader.GetString("OrigemMovimentacaoEstoque");
+                    if (!Enum.TryParse<OrigemMovimentacaoEstoque>(origemStr, out var origemResult))
+                    {
+                        origemResult = OrigemMovimentacaoEstoque.PRONTO;
+                    }
                     pedidos[pedidoId] = new PedidoDTO
                     {
                         Id = pedidoId,
@@ -83,14 +96,10 @@ namespace ServidorLanches.repository
                         FormaPagamento = reader.IsDBNull(reader.GetOrdinal("NomeFormaPagamento")) ? "N/A" : reader.GetString("NomeFormaPagamento"),
                         ValorTotal = reader.GetDecimal("ValorTotal"),
                         DataCriacao = reader.GetDateTime("DataCriacao"),
-                        
-                        TipoMovimentacao = Enum.Parse<TipoMovimentacaoEstoque>(
-                            reader.GetString("TipoMovimentacao")
-                        ),
 
-                        OrigemMovimentacaoEstoque = Enum.Parse<OrigemMovimentacaoEstoque>(
-                            reader.GetString("OrigemMovimentacaoEstoque")
-                        ),
+                        TipoMovimentacao = tipoResult,
+
+                        OrigemMovimentacaoEstoque = origemResult,
 
 
                         Itens = new List<ItemPedidoCardapioDTO>()
@@ -133,7 +142,7 @@ namespace ServidorLanches.repository
                     p.valor_total        AS ValorTotal,
                     p.data_criacao       AS DataCriacao,
                     p.TipoMovimentacao   as TipoMovimentacao,
-                    p.OrigemMovimentacaoEstoque as OrigemMovimentacaoEstoque
+                    p.OrigemMovimentacaoEstoque as OrigemMovimentacaoEstoque,
                     -- Campos de Pagamento
                     fp.id                AS IdFormaPagamento,
                     fp.descricao         AS NomeFormaPagamento,
@@ -209,60 +218,48 @@ namespace ServidorLanches.repository
         // ============================
         // POST
         // ============================
-        public bool AddPedido(PedidoDTO pedido)
+        public int AddPedido(PedidoDTO pedido, MySqlConnection conn, MySqlTransaction transaction)
         {
-            if (pedido == null || pedido.Itens == null || !pedido.Itens.Any())
-                return false;
-
-            using var conn = new MySqlConnection(GetConnectionString());
-            conn.Open();
-            using var transaction = conn.BeginTransaction();
-
-            try
-            {
-                // Adicionado nome_cliente e id_forma_pagamento
-                string sqlPedido = @"
-                INSERT INTO pedidos (id_usuario, cpf_cliente, nome_cliente, id_status, id_forma_pagamento, valor_total, TipoMovimentacao, OrigemMovimentacaoEstoque)
-                VALUES (@id_usuario, @cpf_cliente, @nome_cliente, @id_status, @id_forma_pagamento, @valor_total, @TipoMovimentacao, @OrigemMovimentacaoEstoque );
+            string sqlPedido = @"
+                INSERT INTO pedidos 
+                (id_usuario, cpf_cliente, nome_cliente, id_status, id_forma_pagamento, valor_total, TipoMovimentacao, OrigemMovimentacaoEstoque)
+                VALUES 
+                (@id_usuario, @cpf_cliente, @nome_cliente, @id_status, @id_forma_pagamento, @valor_total, @TipoMovimentacao, @OrigemMovimentacaoEstoque);
                 SELECT LAST_INSERT_ID();
             ";
 
-                using var cmdPedido = new MySqlCommand(sqlPedido, conn, transaction);
-                cmdPedido.Parameters.AddWithValue("@id_usuario", pedido.IdUsuario);
-                cmdPedido.Parameters.AddWithValue("@cpf_cliente", pedido.CpfCliente ?? (object)DBNull.Value);
-                cmdPedido.Parameters.AddWithValue("@nome_cliente", pedido.NomeCliente ?? (object)DBNull.Value);
-                cmdPedido.Parameters.AddWithValue("@id_status", pedido.IdStatus);
-                cmdPedido.Parameters.AddWithValue("@id_forma_pagamento", pedido.IdFormaPagamento);
-                cmdPedido.Parameters.AddWithValue("@valor_total", pedido.ValorTotal);
-                cmdPedido.Parameters.AddWithValue("@TipoMovimentacao", pedido.TipoMovimentacao);
-                cmdPedido.Parameters.AddWithValue("@OrigemMovimentacaoEstoque", pedido.OrigemMovimentacaoEstoque);
+            using var cmdPedido = new MySqlCommand(sqlPedido, conn, transaction);
+            cmdPedido.Parameters.AddWithValue("@id_usuario", pedido.IdUsuario);
+            cmdPedido.Parameters.AddWithValue("@cpf_cliente", pedido.CpfCliente ?? (object)DBNull.Value);
+            cmdPedido.Parameters.AddWithValue("@nome_cliente", pedido.NomeCliente ?? (object)DBNull.Value);
+            cmdPedido.Parameters.AddWithValue("@id_status", pedido.IdStatus);
+            cmdPedido.Parameters.AddWithValue("@id_forma_pagamento", pedido.IdFormaPagamento);
+            cmdPedido.Parameters.AddWithValue("@valor_total", pedido.ValorTotal);
+            cmdPedido.Parameters.AddWithValue("@TipoMovimentacao", (int)pedido.TipoMovimentacao);
+            cmdPedido.Parameters.AddWithValue("@OrigemMovimentacaoEstoque", (int)pedido.OrigemMovimentacaoEstoque);
 
-                int pedidoId = Convert.ToInt32(cmdPedido.ExecuteScalar());
+            int pedidoId = Convert.ToInt32(cmdPedido.ExecuteScalar());
 
-                foreach (var item in pedido.Itens)
-                {
-                    string sqlItem = @"
-                    INSERT INTO itens_pedido (id_pedido, id_produto, quantidade, preco_unitario)
-                    VALUES (@id_pedido, @id_produto, @quantidade, @preco_unitario);";
-
-                    using var cmdItem = new MySqlCommand(sqlItem, conn, transaction);
-                    cmdItem.Parameters.AddWithValue("@id_pedido", pedidoId);
-                    cmdItem.Parameters.AddWithValue("@id_produto", item.IdProduto);
-                    cmdItem.Parameters.AddWithValue("@quantidade", item.Quantidade);
-                    cmdItem.Parameters.AddWithValue("@preco_unitario", item.ValorUnitario);
-                    cmdItem.ExecuteNonQuery();
-                }
-
-                transaction.Commit();
-                return true;
-            }
-            catch (Exception ex)
+            foreach (var item in pedido.Itens)
             {
-                transaction.Rollback();
-                // Log ex.Message se necessário
-                return false;
+                string sqlItem = @"
+                    INSERT INTO itens_pedido 
+                    (id_pedido, id_produto, quantidade, preco_unitario)
+                    VALUES 
+                    (@id_pedido, @id_produto, @quantidade, @preco_unitario);
+                ";
+
+                using var cmdItem = new MySqlCommand(sqlItem, conn, transaction);
+                cmdItem.Parameters.AddWithValue("@id_pedido", pedidoId);
+                cmdItem.Parameters.AddWithValue("@id_produto", item.IdProduto);
+                cmdItem.Parameters.AddWithValue("@quantidade", item.Quantidade);
+                cmdItem.Parameters.AddWithValue("@preco_unitario", item.ValorUnitario);
+                cmdItem.ExecuteNonQuery();
             }
+
+            return pedidoId;
         }
+    
 
 
         // ============================
@@ -379,74 +376,7 @@ namespace ServidorLanches.repository
 
 
 
-        //ESTOQUE 
-        public bool MovimentarEstoque(PedidoDTO pedido)
-        {
-            // Se cair aqui como NENHUMA, o banco nunca será alterado
-            if (pedido.TipoMovimentacao == TipoMovimentacaoEstoque.NENHUMA)
-                return true;
-
-            using var conn = new MySqlConnection(GetConnectionString());
-            conn.Open();
-            using var transaction = conn.BeginTransaction();
-
-            try
-            {
-                bool isSaida = pedido.TipoMovimentacao == TipoMovimentacaoEstoque.SAIDA;
-
-                foreach (var item in pedido.Itens)
-                {
-                    // 1. Validar/Bloquear estoque
-                    string sqlCheck = "SELECT quantidade FROM estoque WHERE id_produto = @idProduto FOR UPDATE";
-                    using var cmdCheck = new MySqlCommand(sqlCheck, conn, transaction);
-                    cmdCheck.Parameters.AddWithValue("@idProduto", item.IdProduto);
-
-                    var result = cmdCheck.ExecuteScalar();
-                    if (result == null)
-                        throw new Exception($"Produto ID {item.IdProduto} ({item.NomeProduto}) não existe na tabela estoque.");
-
-                    int estoqueAtual = Convert.ToInt32(result);
-
-                    if (isSaida && estoqueAtual < item.Quantidade)
-                        throw new Exception($"Estoque insuficiente para {item.NomeProduto}. Disponível: {estoqueAtual}, Necessário: {item.Quantidade}");
-
-                    // 2. Atualizar estoque
-                    string sqlUpdate = isSaida
-                        ? "UPDATE estoque SET quantidade = quantidade - @qtd, ultima_atualizacao = NOW() WHERE id_produto = @idp"
-                        : "UPDATE estoque SET quantidade = quantidade + @qtd, ultima_atualizacao = NOW() WHERE id_produto = @idp";
-
-                    using var cmdUpdate = new MySqlCommand(sqlUpdate, conn, transaction);
-                    cmdUpdate.Parameters.AddWithValue("@idp", item.IdProduto);
-                    cmdUpdate.Parameters.AddWithValue("@qtd", item.Quantidade);
-                    cmdUpdate.ExecuteNonQuery();
-
-                    // 3. Registrar movimentação
-                    string sqlMov = @"INSERT INTO movimentacao_estoque 
-                            (id_produto, tipo, quantidade, origem, id_pedido, id_usuario, data_movimentacao) 
-                            VALUES (@idp, @tipo, @qtd, @origem, @idPed, @idUser, NOW())";
-
-                    using var cmdMov = new MySqlCommand(sqlMov, conn, transaction);
-                    cmdMov.Parameters.AddWithValue("@idp", item.IdProduto);
-                    cmdMov.Parameters.AddWithValue("@tipo", (int)pedido.TipoMovimentacao);
-                    cmdMov.Parameters.AddWithValue("@qtd", item.Quantidade);
-                    cmdMov.Parameters.AddWithValue("@origem", (int)pedido.OrigemMovimentacaoEstoque);
-                    cmdMov.Parameters.AddWithValue("@idPed", pedido.Id);
-                    cmdMov.Parameters.AddWithValue("@idUser", pedido.IdUsuario);
-                    cmdMov.ExecuteNonQuery();
-                }
-
-                transaction.Commit();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                // IMPORTANTE: Isso fará o erro aparecer no console do Visual Studio
-                System.Diagnostics.Debug.WriteLine("ERRO CRÍTICO ESTOQUE: " + ex.Message);
-                throw; // Relança o erro para o Controller retornar 500 em vez de 200 falso
-            }
-        }
-
+        
 
     }
 }

@@ -2,6 +2,7 @@
 using ServidorLanches.Repositories;
 using ServidorLanches.repository;
 using ServidorLanches.service;
+using ServidorLanches.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,8 @@ builder.Services.AddScoped<ProdutoRepository>();
 builder.Services.AddScoped<ProdutoService>();
 builder.Services.AddScoped<AdministrativoRepository>();
 builder.Services.AddScoped<AdministrativoService>();
+builder.Services.AddScoped<EstoqueRepository>();
+builder.Services.AddScoped<EstoqueService>();
 
 var app = builder.Build();
 

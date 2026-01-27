@@ -3,56 +3,84 @@
   "WorkspaceRootPath": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\repository\\pedidosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\pedidosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\service\\pedidosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\pedidosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\repository\\estoquerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\estoquerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\dto\\movimentacaoestoquedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\dto\\movimentacaoestoquedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\dto\\pedidodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\dto\\pedidodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\controllers\\estoquecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\estoquecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\service\\estoqueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\estoqueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\repository\\pedidosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\pedidosrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\dto\\itempedidocardapiodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\dto\\itempedidocardapiodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\repository\\administrativorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\administrativorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\movimentacaoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\movimentacaoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\configuracoesbanco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\configuracoesbanco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\service\\produtoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\produtoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\controllers\\administrativocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\administrativocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\service\\pedidosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\pedidosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\service\\administrativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\administrativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\configuracoesbanco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\configuracoesbanco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\model\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\repository\\administrativorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\administrativorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\controllers\\administrativocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\controllers\\administrativocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\tipostatuspedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -65,10 +93,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\repository\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\repository\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\service\\administrativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\administrativoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\model\\cuponsdedesconto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -107,14 +131,6 @@
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\sql\\sqltables.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\service\\produtoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\service\\produtoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|c:\\users\\flavio\\desktop\\pdvservidor_lanches\\servidorlanches\\servidorlanches\\extensions\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36822577-DD61-4A24-8A24-DA9A870DE257}|ServidorLanches\\ServidorLanches.csproj|solutionrelative:servidorlanches\\extensions\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -138,7 +154,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 25,
           "Children": [
             {
               "$type": "Bookmark",
@@ -146,33 +162,98 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MovimentacaoEstoqueDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\dto\\MovimentacaoEstoqueDTO.cs",
+              "RelativeDocumentMoniker": "ServidorLanches\\model\\dto\\MovimentacaoEstoqueDTO.cs",
+              "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\dto\\MovimentacaoEstoqueDTO.cs",
+              "RelativeToolTip": "ServidorLanches\\model\\dto\\MovimentacaoEstoqueDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T03:15:31.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "Estoque.cs",
+              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\Estoque.cs",
+              "RelativeDocumentMoniker": "ServidorLanches\\model\\Estoque.cs",
+              "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\Estoque.cs",
+              "RelativeToolTip": "ServidorLanches\\model\\Estoque.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:36:39.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EstoqueService.cs",
+              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\service\\EstoqueService.cs",
+              "RelativeDocumentMoniker": "ServidorLanches\\service\\EstoqueService.cs",
+              "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\service\\EstoqueService.cs",
+              "RelativeToolTip": "ServidorLanches\\service\\EstoqueService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:27:02.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EstoqueController.cs",
+              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Controllers\\EstoqueController.cs",
+              "RelativeDocumentMoniker": "ServidorLanches\\Controllers\\EstoqueController.cs",
+              "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Controllers\\EstoqueController.cs",
+              "RelativeToolTip": "ServidorLanches\\Controllers\\EstoqueController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:26:17.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EstoqueRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\repository\\EstoqueRepository.cs",
+              "RelativeDocumentMoniker": "ServidorLanches\\repository\\EstoqueRepository.cs",
+              "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\repository\\EstoqueRepository.cs",
+              "RelativeToolTip": "ServidorLanches\\repository\\EstoqueRepository.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAewJ4AAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T01:13:14.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "MovimentacaoEstoque.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\MovimentacaoEstoque.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\MovimentacaoEstoque.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\MovimentacaoEstoque.cs",
               "RelativeToolTip": "ServidorLanches\\model\\MovimentacaoEstoque.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-26T04:03:05.573Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "ConfiguracoesBanco.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\ConfiguracoesBanco.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\ConfiguracoesBanco.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\ConfiguracoesBanco.cs",
               "RelativeToolTip": "ServidorLanches\\model\\ConfiguracoesBanco.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-26T01:46:45.605Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 23,
               "Title": "CuponsDeDesconto.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\CuponsDeDesconto.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\CuponsDeDesconto.cs",
@@ -185,7 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 24,
               "Title": "ConfiguracoesFiscais.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\ConfiguracoesFiscais.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\ConfiguracoesFiscais.cs",
@@ -198,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 25,
               "Title": "FormaDePagamento.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\FormaDePagamento.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\FormaDePagamento.cs",
@@ -211,7 +292,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 31,
               "Title": "sqltables.txt",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\sql\\sqltables.txt",
               "RelativeDocumentMoniker": "ServidorLanches\\sql\\sqltables.txt",
@@ -224,7 +305,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 21,
               "Title": "CategoriaProduto.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\CategoriaProduto.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\CategoriaProduto.cs",
@@ -237,7 +318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 20,
               "Title": "TipoStatusPedido.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\TipoStatusPedido.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\TipoStatusPedido.cs",
@@ -250,7 +331,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PedidoDTO.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\dto\\PedidoDTO.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\dto\\PedidoDTO.cs",
@@ -263,7 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "ItemPedidoCardapioDTO.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\dto\\ItemPedidoCardapioDTO.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\dto\\ItemPedidoCardapioDTO.cs",
@@ -276,59 +357,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "PedidosRepository.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\repository\\PedidosRepository.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\repository\\PedidosRepository.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\repository\\PedidosRepository.cs",
               "RelativeToolTip": "ServidorLanches\\repository\\PedidosRepository.cs",
-              "ViewState": "AgIAAKABAAAAAAAAAAAQwL8BAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADgBAAAAAAAAAAAmwEUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-18T22:16:10.53Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "ProdutoController.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Controllers\\ProdutoController.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\Controllers\\ProdutoController.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Controllers\\ProdutoController.cs",
               "RelativeToolTip": "ServidorLanches\\Controllers\\ProdutoController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAwwDoAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAqwCsAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-18T22:02:02.201Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 11,
               "Title": "ProdutoService.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\service\\ProdutoService.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\service\\ProdutoService.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\service\\ProdutoService.cs",
               "RelativeToolTip": "ServidorLanches\\service\\ProdutoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-18T05:54:39.844Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 13,
               "Title": "AdministrativoService.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\service\\AdministrativoService.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\service\\AdministrativoService.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\service\\AdministrativoService.cs",
               "RelativeToolTip": "ServidorLanches\\service\\AdministrativoService.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAADwv30AAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAowH0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-18T02:49:08.776Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "AdministrativoController.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Controllers\\AdministrativoController.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\Controllers\\AdministrativoController.cs",
@@ -341,7 +422,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 27,
               "Title": "ConfiguracoesGerais.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\ConfiguracoesGerais.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\ConfiguracoesGerais.cs",
@@ -354,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 18,
               "Title": "AdministrativoRepository.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\repository\\AdministrativoRepository.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\repository\\AdministrativoRepository.cs",
@@ -367,7 +448,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 34,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\LoginRequest.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\LoginRequest.cs",
@@ -379,33 +460,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "LoginController.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\Controllers\\LoginController.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Controllers\\LoginController.cs",
               "RelativeToolTip": "ServidorLanches\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-11T22:51:02.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "enums.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\enums.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\enums.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\enums.cs",
               "RelativeToolTip": "ServidorLanches\\model\\enums.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAADwvzYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAUwEUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-11T22:32:07.049Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 22,
               "Title": "ProdutoRepository.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\repository\\ProdutoRepository.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\repository\\ProdutoRepository.cs",
@@ -418,7 +499,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 29,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\repository\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\repository\\UsuarioRepository.cs",
@@ -431,33 +512,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PedidoController.cs",
-              "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Controllers\\PedidoController.cs",
-              "RelativeDocumentMoniker": "ServidorLanches\\Controllers\\PedidoController.cs",
-              "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Controllers\\PedidoController.cs",
-              "RelativeToolTip": "ServidorLanches\\Controllers\\PedidoController.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAcwFcAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T01:36:17.879Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 12,
               "Title": "PedidosService.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\service\\PedidosService.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\service\\PedidosService.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\service\\PedidosService.cs",
               "RelativeToolTip": "ServidorLanches\\service\\PedidosService.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAUwDQAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAQwJ0AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-05T01:34:06.988Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "SessionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\extensions\\SessionExtensions.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\extensions\\SessionExtensions.cs",
@@ -469,7 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 30,
               "Title": "UsuarioService.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\service\\UsuarioService.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\service\\UsuarioService.cs",
@@ -482,7 +550,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "ItemPedido.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\ItemPedido.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\ItemPedido.cs",
@@ -494,7 +562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 17,
               "Title": "Pedido.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\Pedido.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\Pedido.cs",
@@ -507,7 +575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 26,
               "Title": "Produto.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\Produto.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\Produto.cs",
@@ -520,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 28,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\model\\Usuario.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\model\\Usuario.cs",
@@ -533,7 +601,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 35,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\appsettings.json",
               "RelativeDocumentMoniker": "ServidorLanches\\appsettings.json",
@@ -545,13 +613,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Program.cs",
               "RelativeDocumentMoniker": "ServidorLanches\\Program.cs",
               "ToolTip": "C:\\Users\\Flavio\\Desktop\\PDVSERVIDOR_LANCHES\\ServidorLanches\\ServidorLanches\\Program.cs",
               "RelativeToolTip": "ServidorLanches\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAlwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-04T02:00:37.025Z",
               "EditorCaption": ""

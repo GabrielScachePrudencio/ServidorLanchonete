@@ -53,17 +53,20 @@ namespace ServidorLanches.model
 
     }
      public enum TipoMovimentacaoEstoque
-    {
-        NENHUMA = 0,
-        ENTRADA = 1,
-        SAIDA = 2
-    }
+        {
+            NENHUMA = 0,
+            ENTRADA = 1,
+            SAIDA = 2
+        }
     public enum OrigemMovimentacaoEstoque
     {
+        NAO_DEFINIDO = 0,
         VENDA = 1,
-        CANCELAMENTO = 2,
-        AJUSTE_MANUAL = 3,
-        DEVOLUCAO = 4
+        COMPRA = 2,
+        AJUSTE = 3,       // Adicionado para bater com o banco
+        CANCELAMENTO = 4, // Adicionado para bater com o banco
+        ESTORNADO = 5,
+        PRONTO = 6
     }
 
 

@@ -414,6 +414,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ServidorLanches.Controllers.EstoqueController",
+    "Method": "GetAll",
+    "RelativePath": "api/estoques",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.EstoqueController",
+    "Method": "GetById",
+    "RelativePath": "api/estoques/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServidorLanches.Controllers.EstoqueController",
+    "Method": "Delete",
+    "RelativePath": "api/estoques/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServidorLanches.Controllers.PedidoController",
     "Method": "GetAll",
     "RelativePath": "api/pedidos",
@@ -503,22 +545,6 @@
       {
         "Name": "idnovoStatus",
         "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ServidorLanches.Controllers.PedidoController",
-    "Method": "movimentarEstoque",
-    "RelativePath": "api/pedidos/estoque",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "pedido",
-        "Type": "ServidorLanches.model.dto.PedidoDTO",
         "IsRequired": true
       }
     ],
