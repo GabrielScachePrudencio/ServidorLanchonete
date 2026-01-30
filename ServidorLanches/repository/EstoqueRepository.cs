@@ -9,15 +9,15 @@ namespace ServidorLanches.repository
 {
     public class EstoqueRepository
     {
-        private readonly IConfiguration _config;
+        private readonly DbConnectionManager _dbManager;
 
-        public EstoqueRepository(IConfiguration config)
+        public EstoqueRepository(DbConnectionManager dbManager)
         {
-            _config = config;
+            _dbManager = dbManager;
         }
 
-        private string GetConnectionString() =>
-            _config.GetConnectionString("MySql");
+        private string GetConnectionString() => _dbManager.CurrentConnectionString;
+
 
 
 

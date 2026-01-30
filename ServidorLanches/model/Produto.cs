@@ -7,6 +7,7 @@
         public int IdCategoria { get; set; }
         public decimal Valor { get; set; }
         public bool Disponivel { get; set; }
+        public int quantidade { get; set; }
         public string pathImg { get; set; }
     }
 

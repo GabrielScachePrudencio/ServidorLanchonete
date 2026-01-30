@@ -5,24 +5,19 @@ namespace ServidorLanches.repository
 {
     public class ProdutoRepository
     {
-        private readonly IConfiguration _config;
-
-        public ProdutoRepository(IConfiguration config)
+        private readonly DbConnectionManager _dbManager;
+        public ProdutoRepository(DbConnectionManager dbManager)
         {
-            _config = config;
+            _dbManager = dbManager;
         }
 
-        private MySqlConnection GetConnection()
-        {
-            return new MySqlConnection(
-                _config.GetConnectionString("MySql")
-            );
-        }
+        private string GetConnectionString() => _dbManager.CurrentConnectionString;
+
 
         // GET ALL
         public List<Produto> GetAll()
         {
-            using var conn = GetConnection();
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             List<Produto> produtos = new();
@@ -50,7 +45,7 @@ namespace ServidorLanches.repository
         // GET BY ID
         public Produto GetById(int id)
         {
-            using var conn = GetConnection();
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = "SELECT * FROM produtos WHERE id = @id";
@@ -75,27 +70,56 @@ namespace ServidorLanches.repository
         // ADD
         public bool Add(Produto produto)
         {
-            using var conn = GetConnection();
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
-            string sql = @"INSERT INTO produtos
-                           (nome, id_categoria, valor, disponivel, pathImg)
-                           VALUES (@nome, @id_categoria, @valor, @disponivel, @pathImg)";
+            // Iniciamos uma transação para garantir a integridade dos dados
+            using var transaction = conn.BeginTransaction();
 
-            using var cmd = new MySqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@nome", produto.Nome);
-            cmd.Parameters.AddWithValue("@id_categoria", produto.IdCategoria);
-            cmd.Parameters.AddWithValue("@valor", produto.Valor);
-            cmd.Parameters.AddWithValue("@disponivel", produto.Disponivel);
-            cmd.Parameters.AddWithValue("@pathImg", produto.pathImg);
+            try
+            {
+                // 1. Inserir o Produto
+                string sqlProduto = @"INSERT INTO produtos 
+                             (nome, id_categoria, valor, disponivel, pathImg) 
+                             VALUES (@nome, @id_categoria, @valor, @disponivel, @pathImg);
+                             SELECT LAST_INSERT_ID();"; // Pega o ID gerado
 
-            return cmd.ExecuteNonQuery() > 0;
+                using var cmdProduto = new MySqlCommand(sqlProduto, conn, transaction);
+                cmdProduto.Parameters.AddWithValue("@nome", produto.Nome);
+                cmdProduto.Parameters.AddWithValue("@id_categoria", produto.IdCategoria);
+                cmdProduto.Parameters.AddWithValue("@valor", produto.Valor);
+                cmdProduto.Parameters.AddWithValue("@disponivel", produto.Disponivel);
+                cmdProduto.Parameters.AddWithValue("@pathImg", produto.pathImg);
+
+                // Executa e recupera o ID do produto recém criado
+                int idProdutoGerado = Convert.ToInt32(cmdProduto.ExecuteScalar());
+
+                // 2. Inserir na tabela de Estoque
+                string sqlEstoque = @"INSERT INTO estoque (id_produto, quantidade, ultima_atualizacao) 
+                             VALUES (@idProduto, @quantidade, NOW())";
+
+                using var cmdEstoque = new MySqlCommand(sqlEstoque, conn, transaction);
+                cmdEstoque.Parameters.AddWithValue("@idProduto", idProdutoGerado);
+                cmdEstoque.Parameters.AddWithValue("@quantidade", produto.quantidade);
+
+                cmdEstoque.ExecuteNonQuery();
+
+                // Se chegou até aqui sem erros, confirma as duas inserções
+                transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Se der qualquer erro (ex: falta de conexão), desfaz tudo o que foi feito
+                transaction.Rollback();
+                throw new Exception("Erro ao cadastrar produto e estoque: " + ex.Message);
+            }
         }
 
         // UPDATE
         public bool Update(Produto produto)
         {
-            using var conn = GetConnection();
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = @"UPDATE produtos
@@ -119,7 +143,7 @@ namespace ServidorLanches.repository
         // DELETE
         public bool Delete(int id)
         {
-            using var conn = GetConnection();
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = "DELETE FROM produtos WHERE id = @id";

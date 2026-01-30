@@ -39,7 +39,7 @@ namespace ServidorLanches.service
             {
                 DefinirMovimentacaoEstoque(pedido);
 
-               int pedidoId = _pedidoRepo.AddPedido(pedido, conn, transaction);
+                int pedidoId = _pedidoRepo.AddPedido(pedido, conn, transaction);
                 pedido.Id = pedidoId;
 
                 ProcessarMovimentacaoEstoque(pedido, conn, transaction);
@@ -173,27 +173,40 @@ namespace ServidorLanches.service
             pedido.TipoMovimentacao = TipoMovimentacaoEstoque.NENHUMA;
             pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.NAO_DEFINIDO;
 
-            switch (pedido.IdStatus)
+
+
+            // pronto
+            if (pedido.IdStatus == 1 || pedido.StatusPedido == "pronto")
             {
-                case 5: // Finalizado
-                    pedido.TipoMovimentacao = TipoMovimentacaoEstoque.SAIDA;
-                    pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.VENDA;
-                    break;
-
-                case 9: // Estornado
-                    pedido.TipoMovimentacao = TipoMovimentacaoEstoque.ENTRADA;
-                    pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.ESTORNADO;
-                    break;
-
-                case 10: // Compra
-                    pedido.TipoMovimentacao = TipoMovimentacaoEstoque.ENTRADA;
-                    pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.COMPRA;
-                    break;
-
-                default:
-                    // Status que NÃO mexem no estoque (Pronto, Cancelado, etc)
-                    break;
+                pedido.TipoMovimentacao = TipoMovimentacaoEstoque.NENHUMA;
+                pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.PRONTO;
             }
+            // Finalizado
+            if (pedido.IdStatus == 2 || pedido.StatusPedido == "Finalizado")
+            {
+                pedido.TipoMovimentacao = TipoMovimentacaoEstoque.SAIDA;
+                pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.VENDA;
+            }
+            // Cancelado
+            if (pedido.IdStatus == 3 || pedido.StatusPedido == "Cancelado")
+            {
+                pedido.TipoMovimentacao = TipoMovimentacaoEstoque.NENHUMA;
+                pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.COMPRA;
+            }
+            // Estornado
+            if (pedido.IdStatus == 4 || pedido.StatusPedido == "Estornado")
+            {
+                pedido.TipoMovimentacao = TipoMovimentacaoEstoque.ENTRADA;
+                pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.ESTORNADO;
+            }
+            // Compra
+            if (pedido.IdStatus == 5 || pedido.StatusPedido == "Compra")
+            {
+                pedido.TipoMovimentacao = TipoMovimentacaoEstoque.ENTRADA;
+                pedido.OrigemMovimentacaoEstoque = OrigemMovimentacaoEstoque.COMPRA;
+            }
+
+
         }
 
     }

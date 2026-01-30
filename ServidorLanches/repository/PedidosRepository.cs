@@ -8,14 +8,13 @@ namespace ServidorLanches.repository
 {
     public class PedidosRepository
     {
-        private readonly IConfiguration _config;
-        public PedidosRepository(IConfiguration config)
+        private readonly DbConnectionManager _dbManager;
+        public PedidosRepository(DbConnectionManager dbManager)
         {
-            _config = config;
+            _dbManager = dbManager;
         }
 
-        private string GetConnectionString() =>
-            _config.GetConnectionString("MySql");
+        private string GetConnectionString() => _dbManager.CurrentConnectionString;
 
 
         // ============================

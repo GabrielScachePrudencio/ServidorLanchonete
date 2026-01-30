@@ -8,17 +8,20 @@ namespace ServidorLanches.repository
 {
     public class AdministrativoRepository
     {
-        private readonly IConfiguration _config;
+        private readonly DbConnectionManager _dbManager;
 
-        public AdministrativoRepository(IConfiguration config)
+        public AdministrativoRepository(DbConnectionManager dbManager)
         {
-            _config = config;
+            _dbManager = dbManager;
         }
+
+        private string GetConnectionString() => _dbManager.CurrentConnectionString;
+
 
         public ConfiguracoesGerais GetConfiguracoes()
         {
             using var conn = new MySqlConnection(
-                _config.GetConnectionString("MySql")
+                GetConnectionString()
             );
 
             conn.Open();
@@ -49,7 +52,7 @@ namespace ServidorLanches.repository
 
         public bool AtualizarConfiguracoes(ConfiguracoesGerais config)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             // SQL que atualiza os campos. 
@@ -78,7 +81,7 @@ namespace ServidorLanches.repository
         public List<CategoriaProduto> GetCategoriaProdutos()
         {
             using var conn = new MySqlConnection(
-                _config.GetConnectionString("MySql")
+                GetConnectionString()
             );
 
             conn.Open();
@@ -105,7 +108,7 @@ namespace ServidorLanches.repository
 
         public bool AddCategoriaProduto(CategoriaProduto categoria)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = "INSERT INTO categoriaProduto (nome, ativo) VALUES (@nome, @ativo)";
@@ -119,7 +122,7 @@ namespace ServidorLanches.repository
 
         public bool UpdateCategoriaProduto(int id, CategoriaProduto categoria)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = @"UPDATE categoriaProduto SET
@@ -137,7 +140,7 @@ namespace ServidorLanches.repository
 
         public bool DeleteCategoriaProduto(int id)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = "DELETE FROM categoriaProduto WHERE id = @id";
@@ -155,7 +158,7 @@ namespace ServidorLanches.repository
         public List<TipoStatusPedido> GetStatusPedido()
         {
             using var conn = new MySqlConnection(
-                _config.GetConnectionString("MySql")
+                GetConnectionString()
             );
 
             conn.Open();
@@ -183,7 +186,7 @@ namespace ServidorLanches.repository
 
         public bool AddStatusPedido(TipoStatusPedido status)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = "INSERT INTO statuspedido (nome, ativo) VALUES (@nome, @ativo)";
@@ -197,7 +200,7 @@ namespace ServidorLanches.repository
 
         public bool UpdateStatusPedido(int id, TipoStatusPedido status)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = @"UPDATE statuspedido SET
@@ -214,7 +217,7 @@ namespace ServidorLanches.repository
 
         public bool DeleteStatusPedido(int id)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = "DELETE FROM statuspedido WHERE id = @id";
@@ -231,7 +234,7 @@ namespace ServidorLanches.repository
         //formas de pagamento
         public List<FormaDePagamento> GetAllFormasDePagamentos()
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             var lista = new List<FormaDePagamento>();
@@ -254,7 +257,7 @@ namespace ServidorLanches.repository
 
         public bool AddFormaDePagamento(FormaDePagamento forma)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = @"INSERT INTO formas_pagamento (descricao, ativo)
@@ -269,7 +272,7 @@ namespace ServidorLanches.repository
 
         public bool UpdateFormaDePagamento(int id, FormaDePagamento forma)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = @"UPDATE formas_pagamento SET
@@ -287,7 +290,7 @@ namespace ServidorLanches.repository
         }
         public bool DeleteFormaDePagamento(int id)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = "DELETE FROM formas_pagamento WHERE id = @id";
@@ -302,7 +305,7 @@ namespace ServidorLanches.repository
         //configuracoes fiscais 
         public ConfiguracoesFiscais GetConfiguracoesFiscais()
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = "SELECT * FROM configuracoes_fiscais WHERE id = 1";
@@ -334,7 +337,7 @@ namespace ServidorLanches.repository
 
         public bool AtualizarConfiguracoesFiscais(ConfiguracoesFiscais config)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = @"UPDATE configuracoes_fiscais SET
@@ -373,7 +376,7 @@ namespace ServidorLanches.repository
 
         public bool AddConfiguracoesFiscais(ConfiguracoesFiscais config)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = @"INSERT INTO configuracoes_fiscais (
@@ -426,7 +429,7 @@ namespace ServidorLanches.repository
         //cupons de desconto
         public List<CupomDesconto> GetCuponsDesconto()
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             List<CupomDesconto> lista = new List<CupomDesconto>();
@@ -456,7 +459,7 @@ namespace ServidorLanches.repository
 
         public bool AddCupomDesconto(CupomDesconto cupom)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = @"INSERT INTO cupons_desconto
@@ -477,7 +480,7 @@ namespace ServidorLanches.repository
 
         public bool UpdateCupomDesconto(int id, CupomDesconto cupom)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = @"UPDATE cupons_desconto SET
@@ -502,7 +505,7 @@ namespace ServidorLanches.repository
 
         public bool DeleteCupomDesconto(int id)
         {
-            using var conn = new MySqlConnection(_config.GetConnectionString("MySql"));
+            using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
             string sql = "DELETE FROM cupons_desconto WHERE id = @id";

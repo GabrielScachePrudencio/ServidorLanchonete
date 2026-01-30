@@ -1,4 +1,6 @@
-﻿using ServidorLanches.model;
+﻿using Microsoft.AspNetCore.Mvc;
+using PDV_LANCHES.model;
+using ServidorLanches.model;
 using ServidorLanches.Repositories;
 
 namespace ServidorLanches.Services
@@ -38,6 +40,18 @@ namespace ServidorLanches.Services
         public bool AddUsuario(Usuario novoUsuario)
         {
             return _usuarioRepository.AdicionarUsuario(novoUsuario);
+        }
+
+        public bool VerificarBancoDeDados()
+        {
+            return _usuarioRepository.VerificarBancoDeDados();
+
+        }
+
+        public bool AtualizarConexaoBanco(ConfiguracoesBanco dados)
+        {
+            return _usuarioRepository.AtualizarConexaoBanco(dados);
+
         }
     }
 }

@@ -1,23 +1,28 @@
 ﻿using MySql.Data.MySqlClient;
+using PDV_LANCHES.model;
 using ServidorLanches.model;
 using System.Data;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace ServidorLanches.Repositories
 {
     public class UsuarioRepository
     {
-        private readonly IConfiguration _config;
+        private readonly DbConnectionManager _dbManager;
 
-        public UsuarioRepository(IConfiguration config)
+        public UsuarioRepository(DbConnectionManager dbManager)
         {
-            _config = config;
+            _dbManager = dbManager;
         }
+
+        private string GetConnectionString() => _dbManager.CurrentConnectionString;
+
 
         public Usuario BuscarPorNomeESenha(string nome, string senha)
         {
-            using var conn = new MySqlConnection(
-                _config.GetConnectionString("MySql")
-            );
+            using var conn = new MySqlConnection(GetConnectionString());
 
             conn.Open();
 
@@ -46,9 +51,7 @@ namespace ServidorLanches.Repositories
 
         public List<Usuario> allUsuarios()
         {
-            using var conn = new MySqlConnection(
-                _config.GetConnectionString("MySql")
-            );
+            using var conn = new MySqlConnection(GetConnectionString());
 
 
             conn.Open();
@@ -76,9 +79,8 @@ namespace ServidorLanches.Repositories
 
         public Usuario GetUsuarioById(int id)
         {
-            using var conn = new MySqlConnection(
-                _config.GetConnectionString("MySql")
-            );
+            using var conn = new MySqlConnection(GetConnectionString());
+
             conn.Open();
             string sql = "SELECT * FROM usuarios WHERE id = @id";
             using var cmd = new MySqlCommand(sql, conn);
@@ -98,9 +100,7 @@ namespace ServidorLanches.Repositories
         }
         public bool AtualizarUsuario(Usuario usuario)
         {
-            using var conn = new MySqlConnection(
-                _config.GetConnectionString("MySql")
-            );
+            using var conn = new MySqlConnection(GetConnectionString());
 
             conn.Open();
 
@@ -126,7 +126,7 @@ namespace ServidorLanches.Repositories
         public bool DeletarUsuarioPorId(int id)
         {
             using var conn = new MySqlConnection(
-                _config.GetConnectionString("MySql")
+                GetConnectionString()
             );
 
             conn.Open();
@@ -142,7 +142,7 @@ namespace ServidorLanches.Repositories
         public bool AdicionarUsuario(Usuario usuario)
         {
             using var conn = new MySqlConnection(
-                _config.GetConnectionString("MySql")
+                GetConnectionString()
             );
 
             conn.Open();
@@ -164,5 +164,88 @@ namespace ServidorLanches.Repositories
             return linhasAfetadas > 0;
         }
 
+        public bool VerificarBancoDeDados()
+        {
+            try
+            {
+                using var conn = new MySqlConnection(GetConnectionString());
+
+                conn.Open();
+
+                using var cmd = new MySqlCommand("SELECT 1", conn);
+                cmd.ExecuteScalar();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool AtualizarConexaoBanco(ConfiguracoesBanco config)
+        {
+            try
+            {
+                // 1. Limpeza ultra-rápida (sem regex, apenas string)
+                string hostOriginal = config.Host ?? "localhost";
+                string hostLimpo = hostOriginal
+                    .Replace("https://", "")
+                    .Replace("http://", "")
+                    .Split('/')[0]   // Remove qualquer coisa após a barra
+                    .Split(':')[0];  // Remove a porta se o usuário digitou ex: localhost:5000
+
+                // 2. Montagem da string (A linha que deu o 408)
+                string novaCS = $"Server={hostLimpo};Port={config.PortaBanco};Database={config.NomeBanco};Uid={config.UsuarioBanco};Pwd={config.senhaBanco};Connect Timeout=5;";
+
+                // Log para você ver no console do Servidor se a string ficou bonita
+                Console.WriteLine($"--- Tentando conexão: {novaCS}");
+
+                using var conn = new MySqlConnection(novaCS);
+                conn.Open();
+
+                _dbManager.CurrentConnectionString = novaCS;
+
+                SalvarConexaoNoArquivo(novaCS);
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"--- Falha no MySQL: {ex.Message}");
+                return false;
+            }
+        }
+
+        public void SalvarConexaoNoArquivo(string novaCS)
+        {
+            try
+            {
+                string caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+                Console.WriteLine($"--- Tentando conexão: {caminhoArquivo}");
+
+                if (!File.Exists(caminhoArquivo)) return;
+
+                string jsonTexto = File.ReadAllText(caminhoArquivo);
+                var jsonNode = JsonNode.Parse(jsonTexto);
+
+                if (jsonNode?["ConnectionStrings"]?["MySql"] != null)
+                {
+                    jsonNode["ConnectionStrings"]["MySql"] = novaCS;
+
+                    // 3. Configura para salvar com indentação (bonitinho)
+                    var opcoes = new JsonSerializerOptions { WriteIndented = true };
+                    string novoJson = jsonNode.ToJsonString(opcoes);
+
+                    // 4. Escreve de volta no disco
+                    File.WriteAllText(caminhoArquivo, novoJson);
+                    Console.WriteLine("--- Configuração persistida no appsettings.json com sucesso!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao persistir no JSON: {ex.Message}");
+            }
+        }
     }
 }

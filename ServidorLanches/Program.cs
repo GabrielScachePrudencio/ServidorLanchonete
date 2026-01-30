@@ -1,8 +1,9 @@
-﻿using ServidorLanches.Services;
+﻿using ServidorLanches.Controllers;
+using ServidorLanches.model;
 using ServidorLanches.Repositories;
 using ServidorLanches.repository;
 using ServidorLanches.service;
-using ServidorLanches.Controllers;
+using ServidorLanches.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,9 +39,23 @@ builder.Services.AddScoped<AdministrativoRepository>();
 builder.Services.AddScoped<AdministrativoService>();
 builder.Services.AddScoped<EstoqueRepository>();
 builder.Services.AddScoped<EstoqueService>();
+builder.Services.AddHealthChecks();
+builder.Services.AddSingleton<DbConnectionManager>();
+
+
+builder.Configuration
+    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+// 2. Registre os serviços
+builder.Services.AddControllers();
+builder.Services.AddSingleton<DbConnectionManager>(); // O Singleton lerá o config acima
+
+// ... os outros registros (Repositories, Services, etc)
+builder.Services.AddScoped<UsuarioRepository>();
+// ...
 
 var app = builder.Build();
-
+app.MapHealthChecks("/ping");
 app.UseSession();
 
 if (app.Environment.IsDevelopment())
