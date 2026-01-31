@@ -49,5 +49,17 @@ namespace ServidorLanches.Controllers
 
             return Ok(true);
         }
+
+
+        [HttpPost("atualizarQuantidade/{idproduto}/{quantidade}")]
+        public IActionResult UpdateQtddProduto(int idproduto, int quantidade)
+        {
+            var sucesso = _service.UpdateQtddProduto(idproduto, quantidade);
+
+            if (!sucesso)
+                return NotFound("Estoque não encontrado.");
+
+            return Ok(true);
+        }
     }
 }

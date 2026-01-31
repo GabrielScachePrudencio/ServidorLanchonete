@@ -261,15 +261,23 @@ namespace ServidorLanches.repository
             conn.Open();
 
             string sql = @"INSERT INTO formas_pagamento (descricao, ativo)
-                   VALUES (@descricao, @ativo)";
+                   VALUES (@descricao, @ativo);
+                   SELECT LAST_INSERT_ID();";
 
             using var cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@descricao", forma.Descricao);
             cmd.Parameters.AddWithValue("@ativo", forma.Ativo);
 
-            return cmd.ExecuteNonQuery() > 0;
-        }
+            var idGerado = cmd.ExecuteScalar();
 
+            if (idGerado != null)
+            {
+                forma.Id = Convert.ToInt32(idGerado); 
+                return true;
+            }
+
+            return false;
+        }
         public bool UpdateFormaDePagamento(int id, FormaDePagamento forma)
         {
             using var conn = new MySqlConnection(GetConnectionString());

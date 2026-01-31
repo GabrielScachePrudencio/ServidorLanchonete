@@ -4,6 +4,7 @@ using PDV_LANCHES.model;
 using ServidorLanches.model;
 using ServidorLanches.model.dto;
 using System.Data;
+using System.Security.Cryptography;
 
 namespace ServidorLanches.repository
 {
@@ -152,9 +153,8 @@ namespace ServidorLanches.repository
                     reader.GetString("tipo")
                 ),
 
-                Origem = Enum.Parse<OrigemMovimentacaoEstoque>(
-                    reader.GetString("origem")
-                ),
+                Origem = (OrigemMovimentacaoEstoque) reader.GetInt32("origem"),
+
 
                 QuantidadeMovimentada = reader.GetInt32("quantidade_movimentada"),
                 QuantidadeAntes = reader.GetInt32("quantidade_antes"),
@@ -170,9 +170,8 @@ namespace ServidorLanches.repository
 
                 DataMovimentacao = reader.GetDateTime("data_movimentacao")
             };
+
         }
-
-
 
 
 
@@ -237,5 +236,53 @@ namespace ServidorLanches.repository
                 cmdMov.ExecuteNonQuery();
             }
         }
+        public bool AumentarEstoque(
+    int idProduto,
+    int quantidadeAdicionar,
+    MySqlConnection conn,
+    MySqlTransaction transaction)
+        {
+            // 1️⃣ Verifica se o produto existe e bloqueia
+            string sqlCheck = @"
+        SELECT 1
+        FROM estoque
+        WHERE id_produto = @idProduto
+        FOR UPDATE";
+
+            using var cmdCheck = new MySqlCommand(sqlCheck, conn, transaction);
+            cmdCheck.Parameters.AddWithValue("@idProduto", idProduto);
+
+            var existe = cmdCheck.ExecuteScalar();
+            if (existe == null)
+                throw new Exception($"Produto {idProduto} não encontrado no estoque");
+
+            // 2️⃣ Atualiza estoque (SÓ SOMA)
+            string sqlUpdate = @"
+        UPDATE estoque
+        SET quantidade = quantidade + @qtd
+        WHERE id_produto = @idProduto";
+
+            using var cmdUpdate = new MySqlCommand(sqlUpdate, conn, transaction);
+            cmdUpdate.Parameters.AddWithValue("@qtd", quantidadeAdicionar);
+            cmdUpdate.Parameters.AddWithValue("@idProduto", idProduto);
+            cmdUpdate.ExecuteNonQuery();
+
+            // 3️⃣ Registra movimentação (sempre ENTRADA)
+            string sqlMov = @"
+        INSERT INTO movimentacao_estoque
+        (id_produto, tipo, quantidade, origem, data_movimentacao)
+        VALUES
+        (@idp, @tipo, @qtd, @origem, NOW())";
+
+            using var cmdMov = new MySqlCommand(sqlMov, conn, transaction);
+            cmdMov.Parameters.AddWithValue("@idp", idProduto);
+            cmdMov.Parameters.AddWithValue("@tipo", (int)TipoMovimentacaoEstoque.ENTRADA);
+            cmdMov.Parameters.AddWithValue("@qtd", quantidadeAdicionar);
+            cmdMov.Parameters.AddWithValue("@origem", (int)OrigemMovimentacaoEstoque.COMPRA);
+            cmdMov.ExecuteNonQuery();
+
+            return true;
+        }
+
     }
 }

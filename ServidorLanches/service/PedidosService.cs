@@ -7,21 +7,24 @@ namespace ServidorLanches.service
 {
     public class PedidosService
     {
-        private readonly IConfiguration _config;
+        private readonly DbConnectionManager _dbManager;
         private readonly PedidosRepository _pedidoRepo;
         private readonly EstoqueRepository _estoqueRepo;
-        private string GetConnectionString() =>
-            _config.GetConnectionString("MySql");
+
 
         public PedidosService(
-            IConfiguration config,
+            DbConnectionManager dbManager,
             PedidosRepository pedidoRepo,
             EstoqueRepository estoqueRepo)
         {
-            _config = config;
+            _dbManager = dbManager;
             _pedidoRepo = pedidoRepo;
             _estoqueRepo = estoqueRepo;
         }
+
+        private string GetConnectionString() => _dbManager.CurrentConnectionString;
+
+
 
         public List<PedidoDTO> PegarTodosOsPedidos()
             => _pedidoRepo.GetAllPedidos();

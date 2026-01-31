@@ -25,6 +25,15 @@ namespace ServidorLanches.Controllers
 
             return Ok(cardapios);
         }
+        [HttpGet("ativos")]
+        public IActionResult GetAllAtivos()
+        {
+            var cardapios = _service.GetAllProdutoAtivos();
+            if (cardapios == null || cardapios.Count == 0)
+                return NotFound("Nenhum item no cardápio encontrado.");
+
+            return Ok(cardapios);
+        }
 
         // GET BY ID
         [HttpGet("{id}")]

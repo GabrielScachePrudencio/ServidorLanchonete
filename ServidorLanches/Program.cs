@@ -46,6 +46,10 @@ builder.Services.AddSingleton<DbConnectionManager>();
 builder.Configuration
     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+builder.WebHost.UseUrls("http://192.168.0.10:5000");
+
+
 // 2. Registre os serviços
 builder.Services.AddControllers();
 builder.Services.AddSingleton<DbConnectionManager>(); // O Singleton lerá o config acima

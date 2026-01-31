@@ -41,6 +41,32 @@ namespace ServidorLanches.repository
 
             return produtos;
         }
+        public List<Produto> GetAllAtivos()
+        {
+            using var conn = new MySqlConnection(GetConnectionString());
+            conn.Open();
+
+            List<Produto> produtos = new();
+
+            string sql = "SELECT * FROM produtos where disponivel = 1";
+            using var cmd = new MySqlCommand(sql, conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                produtos.Add(new Produto
+                {
+                    Id = reader.GetInt32("id"),
+                    Nome = reader.GetString("nome"),
+                    IdCategoria = reader.GetInt32("id_categoria"),
+                    Valor = reader.GetDecimal("valor"),
+                    Disponivel = reader.GetBoolean("disponivel"),
+                    pathImg = reader.GetString("pathImg")
+                });
+            }
+
+            return produtos;
+        }
 
         // GET BY ID
         public Produto GetById(int id)
@@ -146,7 +172,7 @@ namespace ServidorLanches.repository
             using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
 
-            string sql = "DELETE FROM produtos WHERE id = @id";
+            string sql = "update produtos set disponivel = 0 where id = @id;";
             using var cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@id", id);
 

@@ -14,6 +14,8 @@ namespace ServidorLanches.service
 
         public List<Produto> GetAllProduto()
             => _repository.GetAll();
+        public List<Produto> GetAllProdutoAtivos()
+            => _repository.GetAllAtivos();
 
         public Produto GetByIdProduto(int id)
             => _repository.GetById(id);

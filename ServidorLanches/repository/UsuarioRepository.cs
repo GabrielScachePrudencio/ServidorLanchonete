@@ -221,26 +221,18 @@ namespace ServidorLanches.Repositories
         {
             try
             {
-                string caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
-                Console.WriteLine($"--- Tentando conexão: {caminhoArquivo}");
+                string pastaAppData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PDV_Lanches");
+                string pastaApp = Path.Combine(pastaAppData, "SERVIDOR_Lanches_Config");
+                if (!Directory.Exists(pastaApp)) Directory.CreateDirectory(pastaApp);
 
-                if (!File.Exists(caminhoArquivo)) return;
+                string caminhoArquivo = Path.Combine(pastaApp, "configServidorConexao.json");
 
-                string jsonTexto = File.ReadAllText(caminhoArquivo);
-                var jsonNode = JsonNode.Parse(jsonTexto);
+                // Criamos um objeto simples para salvar
+                var dados = new { ConnectionString = novaCS };
+                string json = JsonSerializer.Serialize(dados);
 
-                if (jsonNode?["ConnectionStrings"]?["MySql"] != null)
-                {
-                    jsonNode["ConnectionStrings"]["MySql"] = novaCS;
-
-                    // 3. Configura para salvar com indentação (bonitinho)
-                    var opcoes = new JsonSerializerOptions { WriteIndented = true };
-                    string novoJson = jsonNode.ToJsonString(opcoes);
-
-                    // 4. Escreve de volta no disco
-                    File.WriteAllText(caminhoArquivo, novoJson);
-                    Console.WriteLine("--- Configuração persistida no appsettings.json com sucesso!");
-                }
+                File.WriteAllText(caminhoArquivo, json);
+                Console.WriteLine($"--- Conexão salva com sucesso em: {caminhoArquivo}");
             }
             catch (Exception ex)
             {
