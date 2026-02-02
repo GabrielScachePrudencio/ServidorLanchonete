@@ -61,5 +61,17 @@ namespace ServidorLanches.Controllers
 
             return Ok(true);
         }
+
+        // GET ALL
+        [HttpGet("allestoques")]
+        public IActionResult GetAllEstoques()
+        {
+            var dto = _service.GetAllEstoques();
+
+            if (dto == null || dto.Count == 0)
+                return NotFound("Nenhum estoque encontrado.");
+
+            return Ok(dto);
+        }
     }
 }

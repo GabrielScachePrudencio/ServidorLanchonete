@@ -188,10 +188,10 @@ namespace ServidorLanches.repository
 
 
 
-        public void MovimentarEstoque(PedidoDTO pedido, MySqlConnection conn, MySqlTransaction transaction)
+        public string MovimentarEstoque(PedidoDTO pedido, MySqlConnection conn, MySqlTransaction transaction)
         {
             if (pedido.TipoMovimentacao == TipoMovimentacaoEstoque.NENHUMA)
-                return;
+                return "";
 
             bool isSaida = pedido.TipoMovimentacao == TipoMovimentacaoEstoque.SAIDA;
 
@@ -203,12 +203,12 @@ namespace ServidorLanches.repository
 
                 var result = cmdCheck.ExecuteScalar();
                 if (result == null)
-                    throw new Exception($"Produto {item.IdProduto} não existe no estoque");
+                    return $"Produto {item.IdProduto} não existe no estoque";
 
                 int estoqueAtual = Convert.ToInt32(result);
 
                 if (isSaida && estoqueAtual < item.Quantidade)
-                    throw new Exception($"Estoque insuficiente para {item.NomeProduto}");
+                    return $"Estoque insuficiente para {item.NomeProduto}";
 
                 string sqlUpdate = isSaida
                     ? "UPDATE estoque SET quantidade = quantidade - @qtd WHERE id_produto = @idp"
@@ -234,8 +234,12 @@ namespace ServidorLanches.repository
                 cmdMov.Parameters.AddWithValue("@idPed", pedido.Id);
                 cmdMov.Parameters.AddWithValue("@idUser", pedido.IdUsuario);
                 cmdMov.ExecuteNonQuery();
+
+
             }
+            return "ok";
         }
+
         public bool AumentarEstoque(
     int idProduto,
     int quantidadeAdicionar,
@@ -282,6 +286,34 @@ namespace ServidorLanches.repository
             cmdMov.ExecuteNonQuery();
 
             return true;
+        }
+
+         
+            public List<Estoque> GetAllEstoques()
+        {
+            var lista = new List<Estoque>();
+
+            using var conn = new MySqlConnection(GetConnectionString());
+            conn.Open();
+
+            var sql = @"SELECT * FROM estoque;";
+
+            using var cmd = new MySqlCommand(sql, conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lista.Add(new Estoque
+                {
+                    Id = reader.GetInt32("id"),
+                    IdProduto = reader.GetInt32("id_produto"),
+                    Quantidade = reader.GetInt32("quantidade"),
+                    UltimaAtualizacao = reader.GetDateTime("ultima_atualizacao"),
+                    NomeProduto = reader.GetString("nome_produto")
+                });
+            }
+
+            return lista;
         }
 
     }

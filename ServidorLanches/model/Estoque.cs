@@ -16,7 +16,8 @@ namespace PDV_LANCHES.model
 
         public int Quantidade { get; set; }
 
-        public DateTime UltimaAtualizacao { get; set; }
+        public DateTime? UltimaAtualizacao { get; set; }
+        public string NomeProduto { get; set; }
 
     }
 }

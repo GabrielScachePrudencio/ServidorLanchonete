@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Ocsp;
 using ServidorLanches.model;
 using ServidorLanches.model.dto;
 using ServidorLanches.repository;
@@ -28,11 +29,13 @@ namespace ServidorLanches.service
 
         public List<PedidoDTO> PegarTodosOsPedidos()
             => _pedidoRepo.GetAllPedidos();
+        public List<PedidoDTO> PegarTodosOsPedidosFromDia()
+            => _pedidoRepo.GetAllPedidosFromToday();
 
         public PedidoDTO PegarPedidoComItens(int id)
             => _pedidoRepo.GetPedidoById(id);
 
-        public bool CriarPedido(PedidoDTO pedido)
+        public string CriarPedido(PedidoDTO pedido)
         {
             using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
@@ -41,14 +44,18 @@ namespace ServidorLanches.service
             try
             {
                 DefinirMovimentacaoEstoque(pedido);
+                string resposta = ProcessarMovimentacaoEstoque(pedido, conn, transaction);
 
-                int pedidoId = _pedidoRepo.AddPedido(pedido, conn, transaction);
-                pedido.Id = pedidoId;
 
-                ProcessarMovimentacaoEstoque(pedido, conn, transaction);
+                if(resposta == "ok")
+                {
+                    int pedidoId = _pedidoRepo.AddPedido(pedido, conn, transaction);
+                    pedido.Id = pedidoId;
+                }
+
 
                 transaction.Commit();
-                return true;
+                return resposta;
             }
             catch
             {
@@ -59,7 +66,7 @@ namespace ServidorLanches.service
 
 
 
-        public bool AtualizarPedido(PedidoDTO pedido)
+        public string AtualizarPedido(PedidoDTO pedido)
         {
             using var conn = new MySqlConnection(GetConnectionString());
             conn.Open();
@@ -71,18 +78,21 @@ namespace ServidorLanches.service
                 var pedidoAtual = _pedidoRepo.GetPedidoById(pedido.Id);
 
 
-                DefinirMovimentacaoEstoque(pedido);
-                _pedidoRepo.AtualizarPedido(pedido);
+                string resposta = "";
+
 
                 // Só movimenta se o status mudou
                 if (pedidoAtual.IdStatus != pedido.IdStatus)
                 {
                     pedido.Itens = pedidoAtual.Itens; // garante itens
-                    ProcessarMovimentacaoEstoque(pedido, conn, transaction);
+                    resposta = ProcessarMovimentacaoEstoque(pedido, conn, transaction);
+
+                    if(resposta == "ok") _pedidoRepo.AtualizarPedido(pedido);
+                    
                 }
 
                 transaction.Commit();
-                return true;
+                return resposta;
             }
             catch
             {
@@ -107,9 +117,10 @@ namespace ServidorLanches.service
 
                 pedido.IdStatus = idStatus;
 
+                ProcessarMovimentacaoEstoque(pedido, conn, transaction);
+
                 _pedidoRepo.AtualizarStatusDoPedidoById(id, idStatus);
 
-                ProcessarMovimentacaoEstoque(pedido, conn, transaction);
 
                 transaction.Commit();
                 return true;
@@ -157,7 +168,7 @@ namespace ServidorLanches.service
 
         //estoque
 
-        private void ProcessarMovimentacaoEstoque(
+        private string ProcessarMovimentacaoEstoque(
             PedidoDTO pedido,
             MySqlConnection conn,
             MySqlTransaction transaction)
@@ -165,9 +176,9 @@ namespace ServidorLanches.service
                 DefinirMovimentacaoEstoque(pedido);
 
                 if (pedido.TipoMovimentacao == TipoMovimentacaoEstoque.NENHUMA)
-                    return;
+                    return "";
 
-                _estoqueRepo.MovimentarEstoque(pedido, conn, transaction);
+                return _estoqueRepo.MovimentarEstoque(pedido, conn, transaction);
             }
 
 

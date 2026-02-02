@@ -34,6 +34,7 @@ namespace ServidorLanches.repository
                     Nome = reader.GetString("nome"),
                     IdCategoria = reader.GetInt32("id_categoria"),
                     Valor = reader.GetDecimal("valor"),
+                    PrecoUnitario = reader.GetDecimal("preco_unitario"), 
                     Disponivel = reader.GetBoolean("disponivel"),
                     pathImg = reader.GetString("pathImg")
                 });
@@ -60,6 +61,7 @@ namespace ServidorLanches.repository
                     Nome = reader.GetString("nome"),
                     IdCategoria = reader.GetInt32("id_categoria"),
                     Valor = reader.GetDecimal("valor"),
+                    PrecoUnitario = reader.GetDecimal("preco_unitario"),
                     Disponivel = reader.GetBoolean("disponivel"),
                     pathImg = reader.GetString("pathImg")
                 });
@@ -88,6 +90,7 @@ namespace ServidorLanches.repository
                 Nome = reader.GetString("nome"),
                 IdCategoria = reader.GetInt32("id_categoria"),
                 Valor = reader.GetDecimal("valor"),
+                PrecoUnitario = reader.GetDecimal("preco_unitario"),
                 Disponivel = reader.GetBoolean("disponivel"),
                 pathImg = reader.GetString("pathImg")
             };
@@ -106,14 +109,15 @@ namespace ServidorLanches.repository
             {
                 // 1. Inserir o Produto
                 string sqlProduto = @"INSERT INTO produtos 
-                             (nome, id_categoria, valor, disponivel, pathImg) 
-                             VALUES (@nome, @id_categoria, @valor, @disponivel, @pathImg);
+                             (nome, id_categoria, valor, preco_unitario, disponivel, pathImg) 
+                             VALUES (@nome, @id_categoria, @valor, @precoUnitario, @disponivel, @pathImg);
                              SELECT LAST_INSERT_ID();"; // Pega o ID gerado
 
                 using var cmdProduto = new MySqlCommand(sqlProduto, conn, transaction);
                 cmdProduto.Parameters.AddWithValue("@nome", produto.Nome);
                 cmdProduto.Parameters.AddWithValue("@id_categoria", produto.IdCategoria);
                 cmdProduto.Parameters.AddWithValue("@valor", produto.Valor);
+                cmdProduto.Parameters.AddWithValue("@precoUnitario", produto.PrecoUnitario);
                 cmdProduto.Parameters.AddWithValue("@disponivel", produto.Disponivel);
                 cmdProduto.Parameters.AddWithValue("@pathImg", produto.pathImg);
 
@@ -121,12 +125,13 @@ namespace ServidorLanches.repository
                 int idProdutoGerado = Convert.ToInt32(cmdProduto.ExecuteScalar());
 
                 // 2. Inserir na tabela de Estoque
-                string sqlEstoque = @"INSERT INTO estoque (id_produto, quantidade, ultima_atualizacao) 
-                             VALUES (@idProduto, @quantidade, NOW())";
+                string sqlEstoque = @"INSERT INTO estoque (id_produto, quantidade, nome_produto, ultima_atualizacao) 
+                             VALUES (@idProduto, @quantidade, @nomeproduto, NOW())";
 
                 using var cmdEstoque = new MySqlCommand(sqlEstoque, conn, transaction);
                 cmdEstoque.Parameters.AddWithValue("@idProduto", idProdutoGerado);
                 cmdEstoque.Parameters.AddWithValue("@quantidade", produto.quantidade);
+                cmdEstoque.Parameters.AddWithValue("@nomeproduto", produto.Nome);
 
                 cmdEstoque.ExecuteNonQuery();
 
@@ -151,7 +156,9 @@ namespace ServidorLanches.repository
             string sql = @"UPDATE produtos
                            SET nome = @nome,
                                id_categoria = @id_categoria,
-                               valor = @valor,
+                               valor = @valor,      
+                               pathImg = @pathImg,                            
+                               preco_unitario = @precoUnitario, 
                                disponivel = @disponivel
                            WHERE id = @id";
 
@@ -159,6 +166,7 @@ namespace ServidorLanches.repository
             cmd.Parameters.AddWithValue("@nome", produto.Nome);
             cmd.Parameters.AddWithValue("@id_categoria", produto.IdCategoria);
             cmd.Parameters.AddWithValue("@valor", produto.Valor);
+            cmd.Parameters.AddWithValue("@precoUnitario", produto.PrecoUnitario);
             cmd.Parameters.AddWithValue("@disponivel", produto.Disponivel);
             cmd.Parameters.AddWithValue("@id", produto.Id);
             cmd.Parameters.AddWithValue("@pathImg", produto.pathImg);

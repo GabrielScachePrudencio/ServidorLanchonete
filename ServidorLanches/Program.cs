@@ -18,6 +18,8 @@ builder.Services.AddSession(options =>
 });
 
 
+//isso aqui faz ele abrir e aceitar todas as conexoes
+builder.WebHost.UseUrls("http://0.0.0.0:5000");
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -47,7 +49,6 @@ builder.Configuration
     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-builder.WebHost.UseUrls("http://192.168.0.10:5000");
 
 
 // 2. Registre os serviços

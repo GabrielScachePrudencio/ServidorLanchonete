@@ -26,6 +26,15 @@ namespace ServidorLanches.Controllers
 
             return Ok(pedidosDTOS);
         }
+        [HttpGet("pedidosToday")]
+        public IActionResult GetAllToday()
+        {
+            var pedidosDTOS = _service.PegarTodosOsPedidosFromDia();
+            if (pedidosDTOS == null || pedidosDTOS.Count == 0)
+                return NotFound("Nenhum pedido encontrado.");
+
+            return Ok(pedidosDTOS);
+        }
 
         // GET BY ID (com itens)
         [HttpGet("{id}")]
@@ -46,10 +55,10 @@ namespace ServidorLanches.Controllers
                 return BadRequest("Dados inválidos.");
 
             var sucesso = _service.CriarPedido(pedido);
-            if (!sucesso)
-                return BadRequest("Erro ao adicionar pedido.");
+            if (sucesso != "ok")
+                return BadRequest(sucesso);
 
-            return Ok(true);
+            return Ok(sucesso);
         }
 
         // UPDATE
@@ -61,7 +70,7 @@ namespace ServidorLanches.Controllers
 
             var resultado = _service.AtualizarPedido(pedidoDTO);
 
-            if (resultado)
+            if (resultado == "ok")
                return Ok(resultado);
 
             return BadRequest(resultado);

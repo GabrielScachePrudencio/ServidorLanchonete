@@ -58,6 +58,12 @@ namespace ServidorLanches.service
             }
         }
 
+        public List<Estoque> GetAllEstoques()
+        {
+            return estoqueRepository.GetAllEstoques();
+
+        }
+
 
 
         }

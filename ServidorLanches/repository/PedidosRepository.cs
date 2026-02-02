@@ -50,6 +50,7 @@ namespace ServidorLanches.repository
                 pr.id                AS IdProduto,
                 pr.nome              AS NomeProduto,
                 cp.nome              AS CategoriaNome,
+                pr.preco_unitario    AS PrecoUnitarioProduto,
                 pr.pathImg           AS PathProdutoImg
             FROM pedidos p
             JOIN usuarios u            ON u.id = p.id_usuario
@@ -112,6 +113,115 @@ namespace ServidorLanches.repository
                     Categoria = reader.GetString("CategoriaNome"),
                     pathProdutoImg = reader.IsDBNull(reader.GetOrdinal("PathProdutoImg")) ? "" : reader.GetString("PathProdutoImg"),
                     Quantidade = reader.GetInt32("Quantidade"),
+                    ValorUnitario = reader.GetDecimal("ValorUnitario"),
+                    CustoDeFabricacao = reader.GetDecimal("PrecoUnitarioProduto")
+                });
+            }
+
+            return pedidos.Values.ToList();
+        }
+        public List<PedidoDTO> GetAllPedidosFromToday()
+        {
+            using var conn = new MySqlConnection(GetConnectionString());
+            conn.Open();
+
+            var pedidos = new Dictionary<int, PedidoDTO>();
+
+            // Adicionado p.nome_cliente e join com formas_pagamento
+            string sql = @"
+            SELECT 
+                p.id                 AS PedidoId,
+                p.id_usuario         AS IdUsuario,
+                u.nome               AS NomeUsuario, 
+                p.cpf_cliente        AS CpfCliente,
+                p.nome_cliente       AS NomeCliente,
+                p.id_status          AS IdStatus,
+                sp.nome              AS StatusPedidoNome,
+                p.valor_total        AS ValorTotal,
+                p.data_criacao       AS DataCriacao,
+                p.TipoMovimentacao   as TipoMovimentacao,
+                p.OrigemMovimentacaoEstoque as OrigemMovimentacaoEstoque,
+                -- Campos de Pagamento
+                fp.id                AS IdFormaPagamento,
+                fp.descricao         AS NomeFormaPagamento,
+                -- Campos dos Itens
+                i.quantidade         AS Quantidade,
+                i.preco_unitario     AS ValorUnitario,
+                pr.id                AS IdProduto,
+                pr.nome              AS NomeProduto,
+                cp.nome              AS CategoriaNome,
+                pr.pathImg           AS PathProdutoImg,
+                pr.preco_unitario    AS PrecoUnitarioProduto    
+            FROM pedidos p
+            JOIN usuarios u            ON u.id = p.id_usuario
+            JOIN statuspedido sp       ON sp.id = p.id_status
+            LEFT JOIN formas_pagamento fp   ON fp.id = p.id_forma_pagamento -- Ajuste o nome da FK se for diferente
+            JOIN itens_pedido i        ON i.id_pedido = p.id
+            JOIN produtos pr           ON pr.id = i.id_produto
+            JOIN categoriaProduto cp   ON cp.id = pr.id_categoria
+            WHERE p.data_criacao >= @inicio
+            AND p.data_criacao < @fim
+            ORDER BY p.id DESC;"; 
+
+            using var cmd = new MySqlCommand(sql, conn);
+            DateTime inicio = DateTime.Today;
+            DateTime fim = inicio.AddDays(1);
+
+            cmd.Parameters.AddWithValue("@inicio", inicio);
+            cmd.Parameters.AddWithValue("@fim", fim);
+
+            using var reader = cmd.ExecuteReader();
+            
+            while (reader.Read())
+            {
+                int pedidoId = reader.GetInt32("PedidoId");
+
+                if (!pedidos.ContainsKey(pedidoId))
+                {
+
+                    string tipoStr = reader.IsDBNull(reader.GetOrdinal("TipoMovimentacao")) ? "NENHUMA" : reader.GetString("TipoMovimentacao");
+                    if (!Enum.TryParse<TipoMovimentacaoEstoque>(tipoStr, out var tipoResult))
+                    {
+                        tipoResult = TipoMovimentacaoEstoque.NENHUMA;
+                    }
+
+                    // Lógica para OrigemMovimentacao
+                    string origemStr = reader.IsDBNull(reader.GetOrdinal("OrigemMovimentacaoEstoque")) ? "PRONTO" : reader.GetString("OrigemMovimentacaoEstoque");
+                    if (!Enum.TryParse<OrigemMovimentacaoEstoque>(origemStr, out var origemResult))
+                    {
+                        origemResult = OrigemMovimentacaoEstoque.PRONTO;
+                    }
+                    pedidos[pedidoId] = new PedidoDTO
+                    {
+                        Id = pedidoId,
+                        IdUsuario = reader.GetInt32("IdUsuario"),
+                        NomeUsuario = reader.GetString("NomeUsuario"),
+                        CpfCliente = reader.IsDBNull(reader.GetOrdinal("CpfCliente")) ? "" : reader.GetString("CpfCliente"),
+                        NomeCliente = reader.IsDBNull(reader.GetOrdinal("NomeCliente")) ? "Cliente Final" : reader.GetString("NomeCliente"),
+                        IdStatus = reader.GetInt32("IdStatus"),
+                        StatusPedido = reader.GetString("StatusPedidoNome"),
+                        IdFormaPagamento = reader.IsDBNull(reader.GetOrdinal("IdFormaPagamento")) ? 0 : reader.GetInt32("IdFormaPagamento"),
+                        FormaPagamento = reader.IsDBNull(reader.GetOrdinal("NomeFormaPagamento")) ? "N/A" : reader.GetString("NomeFormaPagamento"),
+                        ValorTotal = reader.GetDecimal("ValorTotal"),
+                        DataCriacao = reader.GetDateTime("DataCriacao"),
+
+                        TipoMovimentacao = tipoResult,
+
+                        OrigemMovimentacaoEstoque = origemResult,
+
+
+                        Itens = new List<ItemPedidoCardapioDTO>()
+                    };
+                }
+
+                pedidos[pedidoId].Itens.Add(new ItemPedidoCardapioDTO
+                {
+                    IdProduto = reader.GetInt32("IdProduto"),
+                    NomeProduto = reader.GetString("NomeProduto"),
+                    Categoria = reader.GetString("CategoriaNome"),
+                    pathProdutoImg = reader.IsDBNull(reader.GetOrdinal("PathProdutoImg")) ? "" : reader.GetString("PathProdutoImg"),
+                    Quantidade = reader.GetInt32("Quantidade"),
+                    CustoDeFabricacao = reader.GetDecimal("PrecoUnitarioProduto"),
                     ValorUnitario = reader.GetDecimal("ValorUnitario")
                 });
             }
@@ -149,6 +259,7 @@ namespace ServidorLanches.repository
                     i.quantidade         AS Quantidade,
                     i.preco_unitario     AS ValorUnitario,
                     pr.id                AS IdProduto,
+                    pr.preco_unitario    AS PrecoUnitarioProduto,
                     pr.nome              AS NomeProduto,
                     cp.nome              AS CategoriaNome,
                     pr.pathImg           AS PathProdutoImg
@@ -206,6 +317,7 @@ namespace ServidorLanches.repository
                     Categoria = reader.GetString("CategoriaNome"),
                     pathProdutoImg = reader.IsDBNull(reader.GetOrdinal("PathProdutoImg")) ? "" : reader.GetString("PathProdutoImg"),
                     Quantidade = reader.GetInt32("Quantidade"),
+                    CustoDeFabricacao = reader.GetDecimal("PrecoUnitarioProduto"),
                     ValorUnitario = reader.GetDecimal("ValorUnitario")
                 });
             }

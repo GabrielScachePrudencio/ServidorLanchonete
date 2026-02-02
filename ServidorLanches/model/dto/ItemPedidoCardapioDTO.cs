@@ -9,6 +9,9 @@
 
         public int Quantidade { get; set; }
         public decimal ValorUnitario { get; set; }
+
+        //custo de fabricação do produto
+        public decimal CustoDeFabricacao { get; set; }
     }
 
 }
