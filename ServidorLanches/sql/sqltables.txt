@@ -1,0 +1,139 @@
+CREATE DATABASE Lanches;
+
+drop database lanches;
+drop table cardapio;
+drop table itens_pedido;
+create database lanches;
+use lanches;
+
+
+
+
+create TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    tipoUsuario varchar(100) not null
+);
+
+create table cardapio (       
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+	categoria varchar(20),
+    valor DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    disponivel BOOLEAN DEFAULT TRUE,
+    pathImg varchar(100)
+);
+
+create table pedidos(
+	id int auto_increment primary	key,
+    id_usuario int not null,
+    cpf_cliente char(11), 
+    status_pedido varchar(20),
+    valor_total decimal(10, 2) default 0.0,
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_entrega datetime default current_timestamp,
+    CONSTRAINT fk_pedidos_usuarios FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
+
+CREATE TABLE itens_pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    id_cardapio INT NOT NULL,
+    quantidade INT NOT NULL DEFAULT 1,
+    preco_unitario DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT fk_itens_pedido_pedidos FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE CASCADE,
+    CONSTRAINT fk_itens_pedido_cardapio FOREIGN KEY (id_cardapio) REFERENCES cardapio(id)
+);
+
+create table configuracoesGerais (
+	nome varchar(50),
+    nomeFantasia varchar(50),
+    telefone varchar(20),
+    email varchar(100),
+    endereco varchar(100),
+    pathImagemLogo varchar(100)
+    
+  );
+
+CREATE TABLE configuracoes_fiscais (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cnpj VARCHAR(18) NOT NULL,
+    inscricao_estadual VARCHAR(20),
+    regime_tributario VARCHAR(50),
+    ambiente ENUM('HOMOLOGACAO','PRODUCAO') NOT NULL,
+    serie_nf VARCHAR(10),
+    numero_inicial_nf INT,
+    aliquota_padrao DECIMAL(5,2),
+    codigo_serie_nf VARCHAR(50)
+);
+
+CREATE TABLE formas_pagamento (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL,
+    ativo BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE cupons_desconto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codigo VARCHAR(20) UNIQUE NOT NULL,
+    percentual DECIMAL(5,2),
+    valor_fixo DECIMAL(10,2),
+    data_validade DATE,
+    ativo BOOLEAN DEFAULT TRUE
+);
+
+
+
+INSERT INTO usuarios (nome, email, senha, tipoUsuario) VALUES
+('Gabriel Prudencio', 'gabriel@email.com', '123456', 'Vendedor'),
+('1', 'admin@email.com', '1', 'Administrador'),
+('gabriel', 'gasbriel@email.com', 'gabriel', 'Vendedor');
+
+
+INSERT INTO cardapio (nome, categoria, valor, disponivel, pathImg) VALUES
+('X-Burguer Clássico', 'lanche', 25.90, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/xburguer.jpg'),
+('X-Salada Especial', 'lanche', 28.50, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/xsalada.jpg'),
+('Batata Frita G', 'acompanhamento', 15.00, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/batatafrita.png'),
+('Suco de Laranja 500ml', 'bebida', 12.00, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/sucodelaranja.jpg'),
+('Refrigerante Lata', 'bebida', 6.50, TRUE, 'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/cocacola.jpg'),
+('Pudim de Leite', 'sobremesa', 10.00, TRUE,  'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/cardapio/pudimdeleite.jpg');
+
+INSERT INTO pedidos (id_usuario, cpf_cliente, status_pedido, valor_total) VALUES
+(1, '12345678901', 'entregue', 47.40),
+(1, '12345678901', 'pendente', 28.50),
+(2, '98765432100', 'preparando', 18.50);
+
+INSERT INTO itens_pedido (id_pedido, id_cardapio, quantidade, preco_unitario) VALUES
+(1, 1, 1, 25.90),
+(1, 3, 1, 15.00),
+(1, 5, 1, 6.50),
+(2, 2, 1, 28.50),
+(3, 4, 1, 12.00),
+(3, 5, 1, 6.50);
+
+INSERT INTO configuracoesGerais
+(nome, nomeFantasia, telefone, email, endereco, pathImagemLogo)
+VALUES
+(
+  'Lanches do Gabriel',
+  'Gabriel Lanches',
+  '(11) 11111-1111',
+  'gabriel@gmail.com',
+  'rua tal tal tal',
+  'C:/Users/Flavio/Desktop/Net/wpf/\PDV_LANCHES/\PDV_LANCHES/src/img/logo/gabrielLanches.png'
+);
+
+
+select * from usuarios;
+select * from cardapio;
+select * from pedidos;
+select * from itens_pedido;
+select * from configuracoesGerais;
+select * from configuracoes_fiscais;
+select * from formas_pagamento;
+select * from cupons_desconto;
+
+
