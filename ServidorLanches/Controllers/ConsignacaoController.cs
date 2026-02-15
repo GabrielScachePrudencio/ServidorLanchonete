@@ -88,5 +88,128 @@ namespace ServidorLanches.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
+        //clientes
+
+
+
+        [HttpGet("clientes/verificaSeExiste/{cpf}")]
+        public async Task<IActionResult> verificaSeExiste(String cpf)
+        {
+            try
+            {
+                var resultado = _Service.verificaSeExiste(cpf);
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("clientes")]
+        public IActionResult CriarCliente([FromBody] Cliente cliente)
+        {
+            if (cliente == null)
+                return BadRequest("Dados inválidos.");
+
+            if (!ModelState.IsValid)
+                return BadRequest("Preencha os campos obrigatórios.");
+
+            try
+            {
+                var sucesso = _Service.CriarCliente(cliente);
+
+                if (!sucesso)
+                    return BadRequest("CPF/CNPJ já cadastrado.");
+
+                return Ok("Cliente criado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("clientes")]
+        public IActionResult ListarClientes()
+        {
+            try
+            {
+                var clientes = _Service.ListarClientes();
+
+                if (clientes == null || !clientes.Any())
+                    return NotFound("Nenhum cliente encontrado.");
+
+                return Ok(clientes);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("clientes/{id}")]
+        public IActionResult BuscarClientePorId(int id)
+        {
+            try
+            {
+                var cliente = _Service.BuscarClientePorId(id);
+
+                if (cliente == null)
+                    return NotFound("Cliente não encontrado.");
+
+                return Ok(cliente);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("clientes/atualizar")]
+        public IActionResult AtualizarCliente([FromBody] Cliente cliente)
+        {
+            if (cliente == null)
+                return BadRequest("Dados inválidos.");
+
+            if (!ModelState.IsValid)
+                return BadRequest("Preencha os campos obrigatórios.");
+
+            try
+            {
+                var sucesso = _Service.AtualizarCliente(cliente);
+
+                if (!sucesso)
+                    return BadRequest("CPF/CNPJ já cadastrado.");
+
+                return Ok("Cliente criado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("clientes/{id}")]
+        public IActionResult DesativarCliente(int id)
+        {
+            try
+            {
+                var sucesso = _Service.DesativarCliente(id);
+
+                if (!sucesso)
+                    return NotFound("Cliente não encontrado.");
+
+                return Ok("Cliente desativado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
     }
 }

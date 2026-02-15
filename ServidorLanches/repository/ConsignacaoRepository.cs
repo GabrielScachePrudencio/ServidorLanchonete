@@ -127,7 +127,9 @@ namespace ServidorLanches.repository
                     IdCliente = reader.GetInt32("id_cliente"),
 
                     NomeCliente = reader.GetString("NomeCliente"),
-
+                    DataPrevisaoAcerto = reader.IsDBNull(reader.GetOrdinal("data_previsao_acerto"))
+                         ? (DateTime?)null
+                         : reader.GetDateTime("data_previsao_acerto"),
                     IdUsuario = reader.GetInt32("id_usuario"),
 
                     IdStatus = idStatus,
@@ -211,78 +213,61 @@ namespace ServidorLanches.repository
 
 
         public string AtualizarParaAcerto(Consignacao consignacao)
-
         {
-
-            using var conn = new MySqlConnection(GetConnectionString());
-
-            conn.Open();
-
-            using var transaction = conn.BeginTransaction();
-
-
+            if (consignacao == null) return "Consignação inválida.";
 
             try
-
             {
+                using var conn = new MySqlConnection(GetConnectionString());
+                conn.Open();
 
-                var sql = "UPDATE consignacoes SET id_status = @status WHERE id = @id";
+                using var transaction = conn.BeginTransaction();
 
-                using var cmd = new MySqlCommand(sql, conn, transaction);
+                // Atualizar status e data de previsão de acerto
+                var sql = @"UPDATE consignacoes 
+                    SET id_status = @status, 
+                        data_previsao_acerto = @dataAcerto 
+                    WHERE id = @id";
 
-                cmd.Parameters.AddWithValue("@status", consignacao.IdStatus);
-
-                cmd.Parameters.AddWithValue("@id", consignacao.Id);
-
-                cmd.ExecuteNonQuery();
-
-
-
-                foreach (var item in consignacao.Itens)
-
+                using (var cmd = new MySqlCommand(sql, conn, transaction))
                 {
-
-                    var sqlItem = @"UPDATE consignacao_itens SET 
-
-                             quantidade_vendida = @qtdVenda, 
-
-                             quantidade_devolvida = @qtdDev 
-
-                             WHERE id = @idItem";
-
-
-
-                    using var cmdItem = new MySqlCommand(sqlItem, conn, transaction);
-
-                    cmdItem.Parameters.AddWithValue("@qtdVenda", item.QuantidadeVendida);
-
-                    cmdItem.Parameters.AddWithValue("@qtdDev", item.QuantidadeDevolvida);
-
-                    cmdItem.Parameters.AddWithValue("@idItem", item.Id);
-
-                    cmdItem.ExecuteNonQuery();
-
+                    cmd.Parameters.AddWithValue("@status", consignacao.IdStatus);
+                    cmd.Parameters.AddWithValue("@dataAcerto", consignacao.DataPrevisaoAcerto.HasValue
+                                                                ? (object)consignacao.DataPrevisaoAcerto.Value
+                                                                : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id", consignacao.Id);
+                    cmd.ExecuteNonQuery();
                 }
 
+                // Atualizar itens da consignação
+                if (consignacao.Itens != null)
+                {
+                    foreach (var item in consignacao.Itens)
+                    {
+                        var sqlItem = @"UPDATE consignacao_itens 
+                                SET quantidade_vendida = @qtdVenda, 
+                                    quantidade_devolvida = @qtdDev 
+                                WHERE id = @idItem";
 
+                        using var cmdItem = new MySqlCommand(sqlItem, conn, transaction);
+                        cmdItem.Parameters.AddWithValue("@qtdVenda", item.QuantidadeVendida);
+                        cmdItem.Parameters.AddWithValue("@qtdDev", item.QuantidadeDevolvida);
+                        cmdItem.Parameters.AddWithValue("@idItem", item.Id);
+                        cmdItem.ExecuteNonQuery();
+                    }
+                }
 
                 transaction.Commit();
-
                 return "ok";
-
             }
-
             catch (Exception ex)
-
             {
-
-                transaction.Rollback();
-
-                return "Erro " + ex.Message;
-
+                return "Erro: " + ex.Message;
             }
-
         }
+
+
+
 
         public Consignacao GetById(int id)
 
@@ -325,7 +310,9 @@ namespace ServidorLanches.repository
                 IdCliente = reader.GetInt32("id_cliente"),
 
                 NomeCliente = reader.GetString("NomeCliente"),
-
+                DataPrevisaoAcerto = reader.IsDBNull(reader.GetOrdinal("data_previsao_acerto"))
+                         ? (DateTime?)null
+                         : reader.GetDateTime("data_previsao_acerto"),
                 IdUsuario = reader.GetInt32("id_usuario"),
 
                 IdStatus = reader.GetInt32("id_status"),
@@ -394,6 +381,213 @@ namespace ServidorLanches.repository
 
         }
 
+        //clientes
+
+        // 🔹 CREATE
+
+    public string Inserir(Cliente cliente)
+    {
+        try
+        {
+            using var conn = new MySqlConnection(GetConnectionString());
+            conn.Open();
+
+            string sql = @"
+        INSERT INTO clientes
+        (nome, cpf_cnpj, telefone, email, endereco, ativo)
+        VALUES
+        (@nome, @cpf, @telefone, @email, @endereco, @ativo)";
+
+            using var cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@nome", cliente.Nome);
+            cmd.Parameters.AddWithValue("@cpf", cliente.CpfCnpj);
+            cmd.Parameters.AddWithValue("@telefone", cliente.Telefone);
+            cmd.Parameters.AddWithValue("@email", cliente.Email);
+            cmd.Parameters.AddWithValue("@endereco", cliente.Endereco);
+            cmd.Parameters.AddWithValue("@ativo", cliente.Ativo);
+
+            int linhasAfetadas = cmd.ExecuteNonQuery();
+            if (linhasAfetadas > 0)
+                return "Cliente cadastrado com sucesso!";
+            else
+                return "Nenhuma linha foi afetada. Cliente não cadastrado.";
+
+        }
+        catch (MySqlException ex)
+        {
+            if (ex.Number == 1062)
+                return "Erro: Cliente já cadastrado (CPF ou email duplicado).";
+            else
+                return $"Erro no banco de dados: {ex.Message}";
+        }
+        catch (Exception ex)
+        {
+            return $"Erro inesperado: {ex.Message}";
+        }
+    }
+
+    // 🔹 READ - Buscar por ID
+    public Cliente GetByIdCliente(int id)
+        {
+            using var conn = new MySqlConnection(GetConnectionString());
+            conn.Open();
+
+            string sql = "SELECT * FROM clientes WHERE id = @id";
+
+            using var cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            using var reader = cmd.ExecuteReader();
+
+            if (!reader.Read())
+                return null;
+
+            return MapearCliente(reader);
+        }
+
+        // 🔹 READ - Listar todos
+        public List<Cliente> ListarTodos()
+        {
+            var lista = new List<Cliente>();
+
+            using var conn = new MySqlConnection(GetConnectionString());
+            conn.Open();
+
+            string sql = "SELECT * FROM clientes where ativo = 1 ORDER BY 1 desc";
+
+            using var cmd = new MySqlCommand(sql, conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lista.Add(MapearCliente(reader));
+            }
+
+            return lista;
+        }
+
+        // 🔹 UPDATE
+        public bool Atualizar(Cliente cliente)
+        {
+            try
+            {
+                using var conn = new MySqlConnection(GetConnectionString());
+                conn.Open();
+
+                string sql = @"
+                    UPDATE clientes
+                    SET nome = @nome,
+                        cpf_cnpj = @cpf,
+                        telefone = @telefone,
+                        email = @email,
+                        endereco = @endereco,
+                        ativo = @ativo
+                    WHERE id = @id";
+
+                using var cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", cliente.Id);
+                cmd.Parameters.AddWithValue("@nome", cliente.Nome);
+                cmd.Parameters.AddWithValue("@cpf", cliente.CpfCnpj);
+                cmd.Parameters.AddWithValue("@telefone", cliente.Telefone);
+                cmd.Parameters.AddWithValue("@email", cliente.Email);
+                cmd.Parameters.AddWithValue("@endereco", cliente.Endereco);
+                cmd.Parameters.AddWithValue("@ativo", cliente.Ativo);
+
+                int linhasAfetadas = cmd.ExecuteNonQuery();
+
+                // Debug: quantas linhas foram atualizadas
+                System.Diagnostics.Debug.WriteLine($"Linhas afetadas: {linhasAfetadas}");
+
+                if (linhasAfetadas == 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("Nenhum registro foi atualizado. Verifique se o ID existe.");
+                }
+
+                return linhasAfetadas > 0;
+            }
+            catch (MySqlException ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"MySQL Error {ex.Number}: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro inesperado: {ex.Message}");
+                return false;
+            }
+        }
+
+
+        // 🔹 DELETE (soft delete)
+        public bool Desativar(int id)
+        {
+            using var conn = new MySqlConnection(GetConnectionString());
+            conn.Open();
+
+            string sql = "UPDATE clientes SET ativo = false WHERE id = @id";
+
+            using var cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+
+        // 🔹 Verificar CPF existente
+        public Cliente VerificaSeExiste(string cpf, int? idIgnorar = null)
+        { 
+        using var conn = new MySqlConnection(GetConnectionString());
+        conn.Open();
+
+        string sql = @"
+                SELECT id, nome, cpf_cnpj, telefone, email, endereco, data_cadastro, ativo
+            FROM clientes
+            WHERE cpf_cnpj = @cpf";
+
+        if (idIgnorar.HasValue)
+            sql += " AND id <> @idIgnorar";
+
+        using var cmd = new MySqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@cpf", cpf);
+
+        if (idIgnorar.HasValue)
+        cmd.Parameters.AddWithValue("@idIgnorar", idIgnorar.Value);
+
+        using var reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            return new Cliente
+            {
+                Id = reader.GetInt32("id"),
+                Nome = reader.GetString("nome"),
+                CpfCnpj = reader.GetString("cpf_cnpj"),
+                Telefone = reader["telefone"]?.ToString(),
+                Email = reader["email"]?.ToString(),
+                Endereco = reader["endereco"]?.ToString(),
+                DataCadastro = reader.GetDateTime("data_cadastro"),
+                Ativo = reader.GetBoolean("ativo")
+            };
+        }
+
+            return null;
+        }
+
+
+        // 🔹 Método auxiliar para mapear
+        private Cliente MapearCliente(MySqlDataReader reader)
+        {
+            return new Cliente
+            {
+                Id = reader.GetInt32("id"),
+                Nome = reader.GetString("nome"),
+                CpfCnpj = reader["cpf_cnpj"]?.ToString(),
+                Telefone = reader["telefone"]?.ToString(),
+                Email = reader["email"]?.ToString(),
+                Endereco = reader["endereco"]?.ToString(),
+                DataCadastro = reader.GetDateTime("data_cadastro"),
+                Ativo = reader.GetBoolean("ativo")
+            };
+        }
 
 
     }

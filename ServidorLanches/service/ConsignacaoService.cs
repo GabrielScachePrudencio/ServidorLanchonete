@@ -132,7 +132,7 @@ namespace ServidorLanches.service
                 }
 
                 // 📝 Atualiza consignação
-                consignacao.DataPrevisaoAcerto = DateTime.Now;
+                
                 consignacao.ValorTotalEstimado = valorVendidoTotal;
                 consignacao.NomeStatus = "Finalizado";
                 consignacao.IdStatus = 2;
@@ -220,7 +220,44 @@ namespace ServidorLanches.service
             }
         }
 
+        //clientes 
 
+        public Cliente verificaSeExiste(String cpf)
+        {
+            return repository.VerificaSeExiste(cpf);
+        }
+
+        public bool CriarCliente(Cliente cliente)
+        {
+            // Se não existe no banco, podemos inserir
+            if (repository.VerificaSeExiste(cliente.CpfCnpj) == null)
+            {
+                var resultado = repository.Inserir(cliente);
+                return resultado == "Cliente cadastrado com sucesso!";
+            }
+
+            // Se já existe, não podemos cadastrar
+            return false;
+        }
+        public Cliente BuscarClientePorId(int id)
+        {
+            return repository.GetByIdCliente(id);
+        }
+        public List<Cliente> ListarClientes()
+        {
+            return repository.ListarTodos();
+        }
+        public bool AtualizarCliente(Cliente cliente)
+        {
+            if (repository.VerificaSeExiste(cliente.CpfCnpj, cliente.Id) != null)
+                return false;
+                
+            return repository.Atualizar(cliente);
+        }
+        public bool DesativarCliente(int id)
+        {
+            return repository.Desativar(id);
+        }
 
     }
 }
